@@ -9,16 +9,16 @@
     <style>
         body {
             font-family: "Pretendard", sans-serif;
-            margin: 10px;
+            margin: 0; /* 기본 마진 제거 */
             text-align: center;
             background-color: #f5f5f5;
             color: #333;
         }
         .container {
-            width: 100%;
-            max-width: 900px;
+            max-width: 900px; /* width: 100% 제거 */
             margin: 0 auto;
             padding: 15px;
+            box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
         }
         .header {
             display: flex;
@@ -26,13 +26,13 @@
             justify-content: center;
             margin-bottom: 15px;
             flex-wrap: wrap;
+            gap: 10px; /* margin-right 대신 gap 사용 */
         }
         .header img {
-            width: 18vw; /* 10vw -> 15vw로 증가 */
-            min-width: 100px; /* 모바일에서 더 크게 보이도록 최소 크기 증가 */
-            height: auto; /* 비율 유지 */
-            margin-right: 10px;
-            vertical-align: middle; /* 수직 정렬 */
+            width: 18vw;
+            min-width: 100px;
+            height: auto;
+            vertical-align: middle;
         }
         .header h1 {
             font-size: 2em;
@@ -95,8 +95,8 @@
         /* 반응형 미디어 쿼리 */
         @media (max-width: 768px) {
             .header img {
-                width: 15vw; /* 동일한 비율 유지 */
-                min-width: 70px; /* 태블릿에서 더 크게 */
+                width: 15vw;
+                min-width: 70px;
             }
             .header h1 {
                 font-size: 1.8em;
@@ -119,11 +119,11 @@
 
         @media (max-width: 480px) {
             .container {
-                padding: 10px;
+                padding: 5px; /* 모바일에서 패딩 축소 */
             }
             .header img {
-                width: 15vw; /* 동일한 비율 유지 */
-                min-width: 60px; /* 모바일에서 더 크게 */
+                width: 15vw;
+                min-width: 60px;
             }
             .header h1 {
                 font-size: 1.4em;
