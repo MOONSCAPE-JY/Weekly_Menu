@@ -28,16 +28,16 @@
             flex-wrap: wrap;
         }
         .header img {
-            width: 12vw; /* em 대신 vw 단위로 변경 */
-            min-width: 100px; /* 모바일에서 너무 작아지지 않도록 최소 크기 설정 */
+            width: 15vw; /* 10vw -> 15vw로 증가 */
+            min-width: 80px; /* 모바일에서 더 크게 보이도록 최소 크기 증가 */
             height: auto; /* 비율 유지 */
             margin-right: 10px;
             vertical-align: middle; /* 수직 정렬 */
         }
         .header h1 {
-            font-size: 2em; /* 크기 증가: 1.5em -> 2em */
-            margin: 0; /* 기본 마진 제거 */
-            line-height: 1; /* 높이 조정으로 수직 정렬 보완 */
+            font-size: 2em;
+            margin: 0;
+            line-height: 1;
         }
         .update-date {
             text-align: right;
@@ -53,7 +53,7 @@
             overflow: hidden;
         }
         .card-header {
-            background-color: #d0e8ff; /* 연한 파란색 */
+            background-color: #d0e8ff;
             padding: 10px;
             font-weight: bold;
             font-size: 14px;
@@ -70,7 +70,7 @@
         .meal-table th, .meal-table td {
             border: 1px solid #ddd;
             padding: 8px;
-            text-align: center; /* 중앙 정렬 */
+            text-align: center;
             font-size: 14px;
         }
         .meal-table th {
@@ -95,11 +95,11 @@
         /* 반응형 미디어 쿼리 */
         @media (max-width: 768px) {
             .header img {
-                width: 10vw; /* 동일한 비율 유지 */
-                min-width: 50px; /* 태블릿 크기에서 최소 크기 조정 */
+                width: 15vw; /* 동일한 비율 유지 */
+                min-width: 70px; /* 태블릿에서 더 크게 */
             }
             .header h1 {
-                font-size: 1.8em; /* 1.6em -> 1.8em으로 증가 */
+                font-size: 1.8em;
             }
             .card-header {
                 font-size: 12px;
@@ -122,11 +122,11 @@
                 padding: 10px;
             }
             .header img {
-                width: 10vw; /* 동일한 비율 유지 */
-                min-width: 40px; /* 모바일에서 최소 크기 조정 */
+                width: 15vw; /* 동일한 비율 유지 */
+                min-width: 60px; /* 모바일에서 더 크게 */
             }
             .header h1 {
-                font-size: 1.4em; /* 1.2em -> 1.4em으로 증가 */
+                font-size: 1.4em;
             }
             .card-header {
                 font-size: 11px;
