@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBS광주총국 주간메뉴</title>
+    <!-- Pretendard 폰트 CDN 추가 -->
+    <link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Pretendard", sans-serif;
+            margin: 10px;
+            text-align: center;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .header img {
+            width: 2em; /* 크기 증가: 1.5em -> 2em */
+            height: auto; /* 비율 유지 */
+            margin-right: 10px;
+            vertical-align: middle; /* 수직 정렬 */
+        }
+        .header h1 {
+            font-size: 2em; /* 크기 증가: 1.5em -> 2em */
+            margin: 0; /* 기본 마진 제거 */
+            line-height: 1; /* 높이 조정으로 수직 정렬 보완 */
+        }
+        .update-date {
+            text-align: right;
+            font-size: 12px;
+            margin-bottom: 15px;
+            color: #777;
+        }
+        .menu-card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .card-header {
+            background-color: #d0e8ff; /* 연한 파란색 */
+            padding: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+        }
+        .card-body {
+            padding: 10px;
+        }
+        .meal-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        .meal-table th, .meal-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center; /* 중앙 정렬 */
+            font-size: 14px;
+        }
+        .meal-table th {
+            font-weight: bold;
+            color: #555;
+            background-color: #f9f9f9;
+        }
+        .meal-table td {
+            background-color: #ffffff;
+        }
+        .origin-info {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #555;
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 8px;
+            text-align: left;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 반응형 미디어 쿼리 */
+        @media (max-width: 768px) {
+            .header img {
+                width: 1.6em; /* 1.2em -> 1.6em으로 증가 */
+            }
+            .header h1 {
+                font-size: 1.6em; /* 1.2em -> 1.6em으로 증가 */
+            }
+            .card-header {
+                font-size: 12px;
+                padding: 8px;
+            }
+            .meal-table th, .meal-table td {
+                font-size: 12px;
+                padding: 6px;
+            }
+            .update-date {
+                font-size: 10px;
+            }
+            .origin-info {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            .header img {
+                width: 1.2em; /* 1em -> 1.2em으로 증가 */
+            }
+            .header h1 {
+                font-size: 1.2em; /* 1em -> 1.2em으로 증가 */
+            }
+            .card-header {
+                font-size: 11px;
+                padding: 6px;
+            }
+            .meal-table th, .meal-table td {
+                font-size: 10px;
+                padding: 5px;
+            }
+            .update-date {
+                font-size: 9px;
+            }
+            .origin-info {
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://i.namu.wiki/i/tQAu6pqXa589BYEqUxyS9nR2SRs_RWBu0b_pPj2xm_oZIDwEBx_BRewOGjXcwd60z8D36IVroO8d06ZtY5DPCbQm5QQr1R4K0w1EbhPhSJWOVnoVazfgBTf09Xcyed_ogeLC675mi8FJVZ4L8OWvlw.svg" alt="KBS 로고">
+            <h1>주간메뉴</h1>
+        </div>
+        <div class="update-date">업데이트 날짜: 2025-03-05</div>
+
+        <div class="menu-card">
+            <div class="card-header">월 (3/4)</div>
+            <div class="card-body">
+                <table class="meal-table">
+                    <tr>
+                        <th>점심</th>
+                    </tr>
+                    <tr>
+                        <td>임시공휴일</td>
+                    </tr>
+                </table>
+                <table class="meal-table">
+                    <tr>
+                        <th>저녁</th>
+                    </tr>
+                    <tr>
+                        <td>임시공휴일</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">화 (3/5)</div>
+            <div class="card-body">
+                <table class="meal-table">
+                    <tr>
+                        <th>점심</th>
+                    </tr>
+                    <tr>
+                       <td>잡곡밥<br>김치콩나물국<br>제육볶음<br>사각햄전<br>천사채샐러드<br>상추겉절이<br>배추김치</td>
+                    </tr>
+                </table>
+                <table class="meal-table">
+                    <tr>
+                        <th>저녁</th>
+                    </tr>
+                    <tr>
+                        <td>쌀밥<br>조랭이미역국<br>고등어무조림<br>두부구이/양념장<br>다시마초무침<br>열무된장나물<br>배추김치</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">수 (3/6)</div>
+            <div class="card-body">
+                <table class="meal-table">
+                    <tr>
+                        <th>점심</th>
+                    </tr>
+                    <tr>
+                        <td>쌀밥<br>유부국<br>돈까스/소스<br>소면야채무침<br>어묵볶음<br>양배추샐러드/소스<br>배추김치</td>
+                    </tr>
+                </table>
+                <table class="meal-table">
+                    <tr>
+                        <th>저녁</th>
+                    </tr>
+                    <tr>
+                        <td>쌀밥<br>얼큰버섯국<br>고구마돈갈비찜<br>세발나물전<br>맛살브로콜리샐러드<br>치커리무침<br>배추김치</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">목 (3/7)</div>
+            <div class="card-body">
+                <table class="meal-table">
+                    <tr>
+                        <th>점심</th>
+                    </tr>
+                    <tr>
+                        <td>잡곡밥<br>건새우미역국<br>닭김치볶음<br>미트볼떡강정<br>마늘쫑장아찌<br>유채겉절이<br>깍두기</td>
+                    </tr>
+                </table>
+                <table class="meal-table">
+                    <tr>
+                        <th>저녁</th>
+                    </tr>
+                    <tr>
+                        <td>쌀밥<br>육개장<br>삼치엿장조림<br>날치알계란찜<br>꼬시래기초무침<br>호박볶음<br>배추김치</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">금 (3/8)</div>
+            <div class="card-body">
+                <table class="meal-table">
+                    <tr>
+                        <th>점심</th>
+                    </tr>
+                    <tr>
+                        <td>돈육비빔밥<br>근대된장국<br>계란후라이<br>식빵튀김<br>미역줄기볶음<br>요구르트<br>배추김치</td>
+                    </tr>
+                </table>
+                <table class="meal-table">
+                    <tr>
+                        <th>저녁</th>
+                    </tr>
+                    <tr>
+                        <td>쌀밥<br>돈등뼈탕<br>야채고로케/케찹<br>꽈리고추멸치볶음<br>버섯볶음<br>깻잎지<br>배추김치</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="origin-info">
+            위 메뉴는 식재 수급 사정에 따라 다소 변경될 수 있습니다.<br>* 원산지표시 : 돈육-국내산, 우육-호우산, 닭절-국내산, 닭정육살-브라질산, 쌀-국내산, 고등어-국내산, 오징어(중국산), 꽃게(중국산), 김치(배추-국내산, 고추가루-중국산), 코다리-러시아산, 두부류-수입산, 햄소세지(외국산), 참치(가다랑어, 원양선:태평양)<br>식사시간<br>점심 11:30 ~ 12:30<br>저녁 17:00 ~ 18:10<br>
+        </div>
+    </div>
+</body>
+</html>
