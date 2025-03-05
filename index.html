@@ -24,6 +24,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 30px; /* 주간 식단표 위에 공간 추가 */
             margin-bottom: 15px;
             flex-wrap: wrap;
             gap: 10px; /* margin-right 대신 gap 사용 */
@@ -95,8 +96,8 @@
         /* 반응형 미디어 쿼리 */
         @media (max-width: 768px) {
             .header img {
-                width: 15vw;
-                min-width: 70px;
+                width: 20vw; /* 모바일에서 로고 크기 증가 */
+                min-width: 90px;
             }
             .header h1 {
                 font-size: 1.8em;
@@ -122,8 +123,8 @@
                 padding: 5px; /* 모바일에서 패딩 축소 */
             }
             .header img {
-                width: 15vw;
-                min-width: 60px;
+                width: 25vw; /* 모바일에서 로고 크기 더 증가 */
+                min-width: 80px;
             }
             .header h1 {
                 font-size: 1.4em;
