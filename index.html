@@ -15,40 +15,40 @@
     <style>
         body {
             font-family: "Pretendard", sans-serif;
-            margin: 0; /* 기본 마진 제거 */
+            margin: 0;
             text-align: center;
             background-color: #f5f5f5;
             color: #333;
         }
         .container {
-            max-width: 900px; /* width: 100% 제거 */
+            max-width: 900px;
             margin: 0 auto;
             padding: 15px;
-            box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
+            box-sizing: border-box;
         }
         .header {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 15px; /* 위쪽 공간 줄임 */
+            margin-top: 15px;
             margin-bottom: 15px;
             flex-wrap: wrap;
-            gap: 10px; /* margin-right 대신 gap 사용 */
+            gap: 10px;
         }
         .header img {
-            width: 22vw; /* 로고 크기 증가 */
+            width: 22vw;
             min-width: 100px;
             height: auto;
             vertical-align: middle;
         }
         .header h1 {
-            font-size: 2em; /* 유지 */
+            font-size: 2em;
             margin: 0;
             line-height: 1;
         }
         .update-date {
             text-align: right;
-            font-size: 12px; /* 유지 */
+            font-size: 12px;
             margin-bottom: 15px;
             color: #777;
         }
@@ -63,7 +63,7 @@
             background-color: #d0e8ff;
             padding: 10px;
             font-weight: bold;
-            font-size: 16px; /* 크기 증가 */
+            font-size: 16px;
             color: #333;
         }
         .card-body {
@@ -78,7 +78,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
-            font-size: 16px; /* 크기 증가 */
+            font-size: 16px;
         }
         .meal-table th {
             font-weight: bold;
@@ -90,7 +90,7 @@
         }
         .origin-info {
             margin-top: 15px;
-            font-size: 14px; /* 크기 증가 */
+            font-size: 14px;
             color: #555;
             background: #ffffff;
             padding: 8px;
@@ -98,64 +98,32 @@
             text-align: left;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
-
         /* 반응형 미디어 쿼리 */
         @media (max-width: 768px) {
-            .header img {
-                width: 25vw; /* 모바일에서 로고 크기 증가 */
-                min-width: 100px;
-            }
-            .header h1 {
-                font-size: 1.8em; /* 유지 */
-            }
-            .card-header {
-                font-size: 14px; /* 크기 증가 */
-                padding: 8px;
-            }
-            .meal-table th, .meal-table td {
-                font-size: 14px; /* 크기 증가 */
-                padding: 6px;
-            }
-            .update-date {
-                font-size: 10px; /* 유지 */
-            }
-            .origin-info {
-                font-size: 12px; /* 크기 증가 */
-            }
+            .header img { width: 25vw; min-width: 100px; }
+            .header h1 { font-size: 1.8em; }
+            .card-header { font-size: 14px; padding: 8px; }
+            .meal-table th, .meal-table td { font-size: 14px; padding: 6px; }
+            .update-date { font-size: 10px; }
+            .origin-info { font-size: 12px; }
         }
-
         @media (max-width: 480px) {
-            .container {
-                padding: 5px; /* 모바일에서 패딩 축소 */
-            }
-            .header img {
-                width: 30vw; /* 모바일에서 로고 크기 더 증가 */
-                min-width: 90px;
-            }
-            .header h1 {
-                font-size: 1.4em; /* 유지 */
-            }
-            .card-header {
-                font-size: 12px; /* 크기 증가 */
-                padding: 6px;
-            }
-            .meal-table th, .meal-table td {
-                font-size: 12px; /* 크기 증가 */
-                padding: 5px;
-            }
-            .update-date {
-                font-size: 9px; /* 유지 */
-            }
-            .origin-info {
-                font-size: 10px; /* 크기 증가 */
-            }
+            .container { padding: 5px; }
+            .header img { width: 30vw; min-width: 90px; }
+            .header h1 { font-size: 1.4em; }
+            .card-header { font-size: 12px; padding: 6px; }
+            .meal-table th, .meal-table td { font-size: 12px; padding: 5px; }
+            .update-date { font-size: 9px; }
+            .origin-info { font-size: 10px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/9a81177fddc39730def58989b8a791298c187158/logo.svg" alt="KBS 로고">
+            <a href="https://gwangju.kbs.co.kr/" target="_blank">
+                <img src="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/9a81177fddc39730def58989b8a791298c187158/logo.svg" alt="KBS 로고">
+            </a>
             <h1>주간 식단표</h1>
         </div>
         <div class="update-date">업데이트 날짜: 2025-03-10</div>
@@ -164,42 +132,27 @@
             <div class="card-header">월 (3/10)</div>
             <div class="card-body">
                 <table class="meal-table">
-                    <tr>
-                        <th>점심</th>
-                    </tr>
-                    <tr>
-                        <td>쌀밥<br>물만두국<br>코다리강정<br>돈육잡채<br>콩나물무침<br>열무된장나물<br>배추김치</td>
-                    </tr>
+                    <tr><th>점심</th></tr>
+                    <tr><td>쌀밥<br>물만두국<br>코다리강정<br>돈육잡채<br>콩나물무침<br>열무된장나물<br>배추김치</td></tr>
                 </table>
                 <table class="meal-table">
-                    <tr>
-                        <th>저녁</th>
-                    </tr>
-                    <tr>
-                        <td>쌀밥<br>시래기된장국<br>닭살야채볶음<br>춘권튀김/케찹<br>우엉조림<br>무생채<br>배추김치</td>
-                    </tr>
+                    <tr><th>저녁</th></tr>
+                    <tr><td>쌀밥<br>시래기된장국<br>닭살야채볶음<br>춘권튀김/케찹<br>우엉조림<br>무생채<br>배추김치</td></tr>
                 </table>
             </div>
         </div>
 
+        <!-- 나머지 메뉴 카드 및 origin-info는 동일 -->
         <div class="menu-card">
             <div class="card-header">화 (3/11)</div>
             <div class="card-body">
                 <table class="meal-table">
-                    <tr>
-                        <th>점심</th>
-                    </tr>
-                    <tr>
-                       <td>잡곡밥<br>북어국<br>마파두부<br>해물동그랑땡전<br>버섯볶음<br>상추겉절이<br>배추김치</td>
-                    </tr>
+                    <tr><th>점심</th></tr>
+                    <tr><td>잡곡밥<br>북어국<br>마파두부<br>해물동그랑땡전<br>버섯볶음<br>상추겉절이<br>배추김치</td></tr>
                 </table>
                 <table class="meal-table">
-                    <tr>
-                        <th>저녁</th>
-                    </tr>
-                    <tr>
-                        <td>*<br>햄야채볶음밥<br>버섯된장국<br>새우까스/타르소스<br>쥐어채조림<br>치커리무침<br>깍두기</td>
-                    </tr>
+                    <tr><th>저녁</th></tr>
+                    <tr><td>*<br>햄야채볶음밥<br>버섯된장국<br>새우까스/타르소스<br>쥐어채조림<br>치커리무침<br>깍두기</td></tr>
                 </table>
             </div>
         </div>
@@ -208,20 +161,12 @@
             <div class="card-header">수 (3/12)</div>
             <div class="card-body">
                 <table class="meal-table">
-                    <tr>
-                        <th>점심</th>
-                    </tr>
-                    <tr>
-                        <td>쌀밥<br>아욱된장국<br>김치돈등뼈찜<br>쏘야칠리볶음<br>숙주나물<br>유채겉절이<br>배추김치</td>
-                    </tr>
+                    <tr><th>점심</th></tr>
+                    <tr><td>쌀밥<br>아욱된장국<br>김치돈등뼈찜<br>쏘야칠리볶음<br>숙주나물<br>유채겉절이<br>배추김치</td></tr>
                 </table>
                 <table class="meal-table">
-                    <tr>
-                        <th>저녁</th>
-                    </tr>
-                    <tr>
-                        <td>쌀밥<br>어묵김치국<br>가자미구이<br>돈육계란장조림<br>감자채볶음<br>세발나물<br>배추김치</td>
-                    </tr>
+                    <tr><th>저녁</th></tr>
+                    <tr><td>쌀밥<br>어묵김치국<br>가자미구이<br>돈육계란장조림<br>감자채볶음<br>세발나물<br>배추김치</td></tr>
                 </table>
             </div>
         </div>
@@ -230,20 +175,12 @@
             <div class="card-header">목 (3/13)</div>
             <div class="card-body">
                 <table class="meal-table">
-                    <tr>
-                        <th>점심</th>
-                    </tr>
-                    <tr>
-                        <td>잡곡밥<br>얼큰콩나물국<br>해물덮밥<br>고기산적조림<br>도토리묵/양념장<br>오이지무침<br>배추김치</td>
-                    </tr>
+                    <tr><th>점심</th></tr>
+                    <tr><td>잡곡밥<br>얼큰콩나물국<br>해물덮밥<br>고기산적조림<br>도토리묵/양념장<br>오이지무침<br>배추김치</td></tr>
                 </table>
                 <table class="meal-table">
-                    <tr>
-                        <th>저녁</th>
-                    </tr>
-                    <tr>
-                        <td>쌀밥<br>쑥된장국<br>돈육야채볶음<br>부추전<br>콩조림<br>미역초무침<br>배추김치</td>
-                    </tr>
+                    <tr><th>저녁</th></tr>
+                    <tr><td>쌀밥<br>쑥된장국<br>돈육야채볶음<br>부추전<br>콩조림<br>미역초무침<br>배추김치</td></tr>
                 </table>
             </div>
         </div>
@@ -252,20 +189,12 @@
             <div class="card-header">금 (3/14)</div>
             <div class="card-body">
                 <table class="meal-table">
-                    <tr>
-                        <th>점심</th>
-                    </tr>
-                    <tr>
-                        <td>쌀밥<br>팽이유부국<br>치킨까스/소스<br>스파게티<br>단무지<br>야채샐러드/소스<br>배추김치</td>
-                    </tr>
+                    <tr><th>점심</th></tr>
+                    <tr><td>쌀밥<br>팽이유부국<br>치킨까스/소스<br>스파게티<br>단무지<br>야채샐러드/소스<br>배추김치</td></tr>
                 </table>
                 <table class="meal-table">
-                    <tr>
-                        <th>저녁</th>
-                    </tr>
-                    <tr>
-                        <td>쌀밥<br>순두부계란국<br>삼치무조림<br>김말이튀김<br>어묵볶음<br>봄동겉절이<br>깍두기</td>
-                    </tr>
+                    <tr><th>저녁</th></tr>
+                    <tr><td>쌀밥<br>순두부계란국<br>삼치무조림<br>김말이튀김<br>어묵볶음<br>봄동겉절이<br>깍두기</td></tr>
                 </table>
             </div>
         </div>
