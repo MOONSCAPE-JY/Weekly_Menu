@@ -1,9 +1,23 @@
-<!DOCTYPE html>
+import tkinter as tk
+from tkinter import filedialog, messagebox, ttk
+import pandas as pd
+from datetime import datetime
+import os
+import tempfile
+import webbrowser
+
+# 기본 HTML 템플릿
+html_template = """<!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta name="robots" content="noindex">
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="https://res.static.kbs.co.kr/favicon.ico">
+    <link rel="shortcut icon" href="https://res.static.kbs.co.kr/favicon.png">
+    <link rel="apple-touch-icon" href="https://res.static.kbs.co.kr/favorite.png">
+
     <title>KBS광주총국 주간 식단표</title>
     <!-- Open Graph Meta Tags -->
     <meta property="og:url" content="kbsmenu.com">
@@ -127,74 +141,74 @@
             </a>
             <h1>주간 식단표</h1>
         </div>
-        <div class="update-date">업데이트 날짜: 2025-05-12</div>
+        <div class="update-date">업데이트 날짜: 2025-03-10</div>
 
         <div class="menu-card">
-            <div class="card-header">월 (5/12)</div>
+            <div class="card-header">월 (3/10)</div>
             <div class="card-body">
                 <table class="meal-table">
                     <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>북어계란국<br>오삼불고기<br>두부강정<br>버섯볶음<br>쑥갓나물<br>배추김치</td></tr>
+                    <tr><td>mon_lunch</td></tr>
                 </table>
                 <table class="meal-table">
                     <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>동태탕<br>간장찜닭<br>매콤어묵조림<br>가지볶음<br>상추겉절이<br>배추김치</td></tr>
+                    <tr><td>mon_dinner</td></tr>
                 </table>
             </div>
         </div>
 
         <div class="menu-card">
-            <div class="card-header">화 (5/13)</div>
+            <div class="card-header">화 (3/11)</div>
             <div class="card-body">
                 <table class="meal-table">
                     <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>버섯된장국<br>돈까스/소스<br>떡볶이<br>꽈리고추어묵볶음<br>야채샐러드/소스<br>배추김치</td></tr>
+                    <tr><td>tue_lunch</td></tr>
                 </table>
                 <table class="meal-table">
                     <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>김치콩나물국<br>제육볶음<br>양배추찜/쌈장<br>파래맛살콘전<br>시금치나물<br>깍두기</td></tr>
+                    <tr><td>tue_dinner</td></tr>
                 </table>
             </div>
         </div>
 
         <div class="menu-card">
-            <div class="card-header">수 (5/14)</div>
+            <div class="card-header">수 (3/12)</div>
             <div class="card-body">
                 <table class="meal-table">
                     <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>육개장<br>코다리강정<br>메추리알장조림<br>미역줄기볶음<br>오이부추무침<br>배추김치</td></tr>
+                    <tr><td>wed_lunch</td></tr>
                 </table>
                 <table class="meal-table">
                     <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>잔치국수<br>너비아니전<br>오징어도라지무침<br>마카로니샐러드<br>단무지<br>배추김치</td></tr>
+                    <tr><td>wed_dinner</td></tr>
                 </table>
             </div>
         </div>
 
         <div class="menu-card">
-            <div class="card-header">목 (5/15)</div>
+            <div class="card-header">목 (3/13)</div>
             <div class="card-body">
                 <table class="meal-table">
                     <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>수제비국<br>돈육김치볶음<br>온두부/양념장<br>숙주나물<br>열무겉절이<br>깍두기</td></tr>
+                    <tr><td>thu_lunch</td></tr>
                 </table>
                 <table class="meal-table">
                     <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>돈등뼈탕<br>가자미구이<br>비엔나소세지볶음<br>민물새우무조림<br>깻잎지<br>배추김치</td></tr>
+                    <tr><td>thu_dinner</td></tr>
                 </table>
             </div>
         </div>
 
         <div class="menu-card">
-            <div class="card-header">금 (5/16)</div>
+            <div class="card-header">금 (3/14)</div>
             <div class="card-body">
                 <table class="meal-table">
                     <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>근대된장국<br>콩나물불고기<br>해물동그랑땡전<br>건새우마늘쫑볶음<br>상추겉절이<br>배추김치</td></tr>
+                    <tr><td>fri_lunch</td></tr>
                 </table>
                 <table class="meal-table">
                     <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>소고기미역국<br>순대야채볶음<br>계란말이<br>얼갈이배추겉절이<br>오복지무침<br>배추김치</td></tr>
+                    <tr><td>fri_dinner</td></tr>
                 </table>
             </div>
         </div>
@@ -205,3 +219,233 @@
     </div>
 </body>
 </html>
+"""
+
+# 날짜 형식을 "월/일"로 변환하는 함수
+def format_date(date_str):
+    try:
+        date_str = str(date_str).strip()
+        # "월 (3월3일)" 또는 "화 (3월4일)"에서 요일과 날짜 분리
+        day_of_week = date_str.split()[0]  # "월", "화" 등
+        date_part = date_str.split("(")[1].replace(")", "")  # "3월3일"
+        formatted_date = date_part.replace("월", "/").replace("일", "")  # "3/3"
+        return f"{day_of_week} ({formatted_date})"
+    except Exception:
+        return str(date_str)  # 변환 실패 시 원래 문자열 반환
+
+# NaN 체크 함수
+def check_nan(value):
+    if pd.isna(value):
+        return ""
+    return str(value)
+
+# HTML 수정 함수
+def update_html(df):
+    try:
+        # 데이터프레임 크기 확인 (최소 14행, 6열 필요)
+        if df.empty or df.shape[0] < 14 or df.shape[1] < 6:
+            return f"Error: 시트를 확인해주세요"
+
+        # 조건 1: 업로드 날짜로 "업데이트 날짜" 대체
+        upload_date = datetime.now().strftime("%Y-%m-%d")
+        updated_html = html_template.replace("업데이트 날짜: 2025-03-10", f"업데이트 날짜: {upload_date}")
+
+        # 조건 2: B5, C5, D5, E5, F5 -> 요일 날짜 (형식 변환)
+        b5_content = format_date(df.iloc[4, 1])  # B5
+        updated_html = updated_html.replace("월 (3/10)", b5_content)
+
+        c5_content = format_date(df.iloc[4, 2])  # C5
+        updated_html = updated_html.replace("화 (3/11)", c5_content)
+
+        d5_content = format_date(df.iloc[4, 3])  # D5
+        updated_html = updated_html.replace("수 (3/12)", d5_content)
+
+        e5_content = format_date(df.iloc[4, 4])  # E5
+        updated_html = updated_html.replace("목 (3/13)", e5_content)
+
+        f5_content = format_date(df.iloc[4, 5])  # F5
+        updated_html = updated_html.replace("금 (3/14)", f5_content)
+
+        # 조건 3: 점심 메뉴 (B6~B13, C6~C13, D6~D13, E6~E13, F6~F13)
+        # 월요일 점심 (B6~B13)
+        b6_to_b13 = [check_nan(df.iloc[i, 1]) for i in range(5, 13)]  # B6~B13
+        b_lunch_content = "<br>".join([item for item in b6_to_b13 if item])
+        updated_html = updated_html.replace("mon_lunch", b_lunch_content)
+
+        # 화요일 점심 (C6~C13)
+        c6_to_c13 = [check_nan(df.iloc[i, 2]) for i in range(5, 13)]  # C6~C13
+        c_lunch_content = "<br>".join([item for item in c6_to_c13 if item])
+        updated_html = updated_html.replace("tue_lunch", c_lunch_content)
+
+        # 수요일 점심 (D6~D13)
+        d6_to_d13 = [check_nan(df.iloc[i, 3]) for i in range(5, 13)]  # D6~D13
+        d_lunch_content = "<br>".join([item for item in d6_to_d13 if item])
+        updated_html = updated_html.replace("wed_lunch", d_lunch_content)
+
+        # 목요일 점심 (E6~E13)
+        e6_to_e13 = [check_nan(df.iloc[i, 4]) for i in range(5, 13)]  # E6~E13
+        e_lunch_content = "<br>".join([item for item in e6_to_e13 if item])
+        updated_html = updated_html.replace("thu_lunch", e_lunch_content)
+
+        # 금요일 점심 (F6~F13)
+        f6_to_f13 = [check_nan(df.iloc[i, 5]) for i in range(5, 13)]  # F6~F13
+        f_lunch_content = "<br>".join([item for item in f6_to_f13 if item])
+        updated_html = updated_html.replace("fri_lunch", f_lunch_content)
+
+        # 조건 4: 저녁 메뉴 (B14~B21, C14~C21, D14~D21, E14~E21, F14~F21)
+        # 월요일 저녁 (B14~B21)
+        b14_to_b21 = [check_nan(df.iloc[i, 1]) for i in range(13, 21)]  # B14~B21
+        b_dinner_content = "<br>".join([item for item in b14_to_b21 if item])
+        updated_html = updated_html.replace("mon_dinner", b_dinner_content)
+
+        # 화요일 저녁 (C14~C21)
+        c14_to_c21 = [check_nan(df.iloc[i, 2]) for i in range(13, 21)]  # C14~C21
+        c_dinner_content = "<br>".join([item for item in c14_to_c21 if item])
+        updated_html = updated_html.replace("tue_dinner", c_dinner_content)
+
+        # 수요일 저녁 (D14~D21)
+        d14_to_d21 = [check_nan(df.iloc[i, 3]) for i in range(13, 21)]  # D14~D21
+        d_dinner_content = "<br>".join([item for item in d14_to_d21 if item])
+        updated_html = updated_html.replace("wed_dinner", d_dinner_content)
+
+        # 목요일 저녁 (E14~E21)
+        e14_to_e21 = [check_nan(df.iloc[i, 4]) for i in range(13, 21)]  # E14~E21
+        e_dinner_content = "<br>".join([item for item in e14_to_e21 if item])
+        updated_html = updated_html.replace("thu_dinner", e_dinner_content)
+
+        # 금요일 저녁 (F14~F21)
+        f14_to_f21 = [check_nan(df.iloc[i, 5]) for i in range(13, 21)]  # F14~F21
+        f_dinner_content = "<br>".join([item for item in f14_to_f21 if item])
+        updated_html = updated_html.replace("fri_dinner", f_dinner_content)
+
+        return updated_html
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+# UI 클래스
+class App:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("HTML Menu Updater")
+        self.root.geometry("600x400")
+
+        # 상단 프레임 (버튼 배치용)
+        self.top_frame = tk.Frame(root)
+        self.top_frame.grid(row=0, column=0, columnspan=2, sticky="ew", pady=10)
+
+        # 파일 업로드 버튼 (좌측 상단)
+        self.upload_btn = tk.Button(
+            self.top_frame, text="Excel 파일 업로드", command=self.upload_file
+        )
+        self.upload_btn.pack(side=tk.LEFT, padx=10)
+
+        # 텍스트로 복사 버튼 (위치 변경: 웹사이트에서 확인 버튼 오른쪽)
+        self.copy_btn = tk.Button(
+            self.top_frame, text="텍스트로 복사", command=self.copy_text
+        )
+        self.copy_btn.pack(side=tk.RIGHT, padx=10)
+
+        # 웹사이트에서 확인 버튼 (위치 변경: 텍스트로 복사 버튼 왼쪽)
+        self.browser_btn = tk.Button(
+            self.top_frame, text="웹사이트에서 확인", command=self.open_in_browser
+        )
+        self.browser_btn.pack(side=tk.RIGHT, padx=10)
+
+        # 시트 선택 라벨과 콤보박스
+        self.sheet_label = tk.Label(root, text="시트를 선택하세요:")
+        self.sheet_label.grid(row=1, column=0, sticky="w", padx=10, pady=5)
+
+        self.sheet_combo = ttk.Combobox(root, state="disabled")
+        self.sheet_combo.grid(row=1, column=1, sticky="ew", padx=10, pady=5)
+        self.sheet_combo.bind("<<ComboboxSelected>>", self.update_preview)
+
+        # 결과 표시 텍스트 영역
+        self.result_text = tk.Text(root, height=20, width=70)
+        self.result_text.grid(
+            row=2, column=0, columnspan=2, padx=10, pady=10, sticky="nsew"
+        )
+
+        # 그리드 가중치 설정 (창 크기 조절 시 텍스트 영역 확장)
+        root.grid_rowconfigure(2, weight=1)
+        root.grid_columnconfigure(1, weight=1)
+
+        self.file_path = None
+        self.sheet_names = []
+
+    def upload_file(self):
+        self.file_path = filedialog.askopenfilename(
+            filetypes=[("Excel files", "*.xlsx")]
+        )
+        if self.file_path:
+            try:
+                # Excel 파일의 시트 목록 읽기
+                xl = pd.ExcelFile(self.file_path, engine="openpyxl")
+                self.sheet_names = xl.sheet_names
+                if not self.sheet_names:
+                    messagebox.showerror("오류", "Excel 파일에 시트가 없습니다.")
+                    return
+
+                # 콤보박스 활성화 및 시트 목록 설정
+                self.sheet_combo.config(values=self.sheet_names, state="normal")
+                self.sheet_combo.set(
+                    self.sheet_names[0]
+                )  # 기본값으로 첫 번째 시트 선택
+                self.update_preview(None)  # 초기 미리보기 업데이트
+            except Exception as e:
+                messagebox.showerror(
+                    "오류", f"Excel 파일을 여는 중 오류 발생: {str(e)}"
+                )
+
+    def update_preview(self, event):
+        if self.file_path and self.sheet_combo.get():
+            try:
+                # 선택한 시트 읽기 (헤더 없음)
+                df = pd.read_excel(
+                    self.file_path,
+                    sheet_name=self.sheet_combo.get(),
+                    engine="openpyxl",
+                    header=None,
+                )
+                updated_html = update_html(df)
+                self.result_text.delete(1.0, tk.END)
+                self.result_text.insert(tk.END, updated_html)
+                self.updated_html = updated_html
+            except Exception as e:
+                messagebox.showerror("오류", f"시트를 처리하는 중 오류 발생: {str(e)}")
+
+    def copy_text(self):
+        if hasattr(self, "updated_html"):
+            # 클립보드에 텍스트 복사
+            self.root.clipboard_clear()
+            self.root.clipboard_append(self.updated_html)
+            self.root.update()  # 클립보드 업데이트
+            messagebox.showinfo("성공", "텍스트가 클립보드에 복사되었습니다!")
+        else:
+            messagebox.showwarning(
+                "경고", "먼저 Excel 파일을 업로드하고 시트를 선택하세요!"
+            )
+
+    def open_in_browser(self):
+        if hasattr(self, "updated_html"):
+            try:
+                # 임시 파일 생성
+                temp_dir = tempfile.gettempdir()
+                temp_file = os.path.join(temp_dir, "menu_preview.html")
+                with open(temp_file, "w", encoding="utf-8") as f:
+                    f.write(self.updated_html)
+
+                # 웹 브라우저에서 파일 열기
+                webbrowser.open("file://" + os.path.realpath(temp_file))
+                messagebox.showinfo("성공", "웹 브라우저에서 HTML 파일이 열렸습니다!")
+            except Exception as e:
+                messagebox.showerror("오류", f"HTML 파일을 여는 중 오류 발생: {str(e)}")
+        else:
+            messagebox.showwarning(
+                "경고", "먼저 Excel 파일을 업로드하고 시트를 선택하세요!"
+            )
+
+# 메인 실행
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = App(root)
+    root.mainloop()
