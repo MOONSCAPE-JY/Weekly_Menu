@@ -1,25 +1,23 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="noindex">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KBS광주 주간식단표 안내 페이지입니다.">
-
-    <link rel="shortcut icon" href="https://res.static.kbs.co.kr/favicon.ico">
-    <link rel="shortcut icon" href="https://res.static.kbs.co.kr/favicon.png">
-    <link rel="apple-touch-icon" href="https://res.static.kbs.co.kr/favorite.png">
-
-    <title>KBS광주총국 주간 식단표</title>
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:url" content="kbsmenu.com">
-    <meta property="og:title" content="KBS광주 주간식단표">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/thumbnail.png">
-    <meta property="og:description" content="KBS광주총국 주간 식단표 안내 페이지입니다.">
-
-    <link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="noindex" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="KBS광주 주간식단표 안내 페이지입니다." name="description"/>
+<link href="https://res.static.kbs.co.kr/favicon.ico" rel="shortcut icon"/>
+<link href="https://res.static.kbs.co.kr/favicon.png" rel="shortcut icon"/>
+<link href="https://res.static.kbs.co.kr/favorite.png" rel="apple-touch-icon"/>
+<title>KBS광주총국 주간 식단표</title>
+<!-- Open Graph Meta Tags -->
+<meta content="kbsmenu.com" property="og:url"/>
+<meta content="KBS광주 주간식단표" property="og:title"/>
+<meta content="website" property="og:type"/>
+<meta content="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/thumbnail.png" property="og:image"/>
+<meta content="KBS광주총국 주간 식단표 안내 페이지입니다." property="og:description"/>
+<link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css" rel="stylesheet"/>
+<style>
         body {
             font-family: 'Noto Sans KR', sans-serif;
             margin: 0;
@@ -55,7 +53,7 @@
         }
         .update-date {
             text-align: right;
-            font-size: 12px;
+            font-size: 14px;
             margin-bottom: 15px;
             color: #777;
         }
@@ -85,7 +83,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
-            font-size: 16px;
+            font-size: 20px;
         }
         .meal-table th {
             font-weight: bold;
@@ -97,7 +95,7 @@
         }
         .origin-info {
             margin-top: 15px;
-            font-size: 14px;
+            font-size: 17px;
             color: #555;
             background: #ffffff;
             padding: 8px;
@@ -109,105 +107,99 @@
         @media (max-width: 768px) {
             .header img { width: 25vw; min-width: 100px; }
             .header h1 { font-size: 1.8em; }
-            .card-header { font-size: 14px; padding: 8px; }
-            .meal-table th, .meal-table td { font-size: 14px; padding: 6px; }
-            .update-date { font-size: 10px; }
-            .origin-info { font-size: 12px; }
+            .card-header { font-size: 17px; padding: 8px; }
+            .meal-table th, .meal-table td { font-size: 17px; padding: 6px; }
+            .update-date { font-size: 12px; }
+            .origin-info { font-size: 14px; }
         }
         @media (max-width: 480px) {
             .container { padding: 5px; }
             .header img { width: 30vw; min-width: 90px; }
             .header h1 { font-size: 1.4em; }
-            .card-header { font-size: 12px; padding: 6px; }
-            .meal-table th, .meal-table td { font-size: 12px; padding: 5px; }
-            .update-date { font-size: 9px; }
-            .origin-info { font-size: 10px; }
+            .card-header { font-size: 14px; padding: 6px; }
+            .meal-table th, .meal-table td { font-size: 14px; padding: 5px; }
+            .update-date { font-size: 11px; }
+            .origin-info { font-size: 12px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <a href="https://gwangju.kbs.co.kr/" target="_blank">
-                <img src="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/9a81177fddc39730def58989b8a791298c187158/logo.svg" alt="KBS 로고">
-            </a>
-            <h1>주간 식단표</h1>
-        </div>
-        <div class="update-date">업데이트 날짜: 2025-06-15</div>
-
-        <div class="menu-card">
-            <div class="card-header">월 (6/16)</div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>건새우콩나물국<br>돈육불고기<br>양배추찜<br>두부구이/양념장<br>무생채<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>순두부계란국<br>고등어김치조림<br>비엔나볶음<br>단호박죽<br>오이지무침<br>깍두기</td></tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="menu-card">
-            <div class="card-header">화 (6/17)</div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>유부국<br>등심돈까스/소스<br>감자채볶음<br>두부쑥갓무침<br>야채샐러드/소드<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>김밥볶음밥<br>라면<br>어묵밀떡볶이<br>김말이튀김<br>콩나물무침<br>단무지<br>배추김치</td></tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="menu-card">
-            <div class="card-header">수 (6/18)</div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>참치김치찌개<br>모듬장조림<br>계란말이<br>구이김<br>상추겉절이<br>깍두기</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>황태해장국<br>제육볶음<br>잡채어묵말이강정<br>호박볶음<br>부추겉절이<br>배추김치</td></tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="menu-card">
-            <div class="card-header">목 (6/19)</div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>감자호박된장국<br>삼치구이<br>야채쫄면<br>가지굴소스볶음<br>연근조림<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>버섯찌개<br>간장찜닭<br>오징어부추전<br>쥐어채조림<br>오이새콤무침<br>배추김치</td></tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="menu-card">
-            <div class="card-header">금 (6/20)</div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>*<br>보리열무비빔밥<br>바지락살미역국<br>계란후라이<br>꽈리고추어묵볶음<br>요구르트<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>삼색수제비국<br>코다리무조림<br>치킨너겟/소스<br>숙주미나리나물<br>깻잎지<br>배추김치</td></tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="origin-info">
-            위 메뉴는 식재 수급 사정에 따라 다소 변경될 수 있습니다.<br>원산지표시 : 돈육-국내산, 우육-호주산, 닭절-국내산, 닭정육살-브라질산, 쌀-국내산, 고등어-국내산, 오징어(중국산), 꽃게(중국산), 김치(배추-국내산, 고추가루-중국산), 코다리-러시아산, 두부류-수입산, 햄소세지(외국산), 참치(가다랑어, 원양선:태평양)<br>식사시간<br>점심 11:30 ~ 12:30<br>저녁 17:00 ~ 18:10<br>KBS광주 주간식단표 사이트 비공식 운영중 (사이트 문의 : 기술국 문재윤)<br>
-        </div>
-    </div>
+<div class="container">
+<div class="header">
+<a href="https://gwangju.kbs.co.kr/" target="_blank">
+<img alt="KBS 로고" src="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/9a81177fddc39730def58989b8a791298c187158/logo.svg"/>
+</a>
+<h1>주간 식단표</h1>
+</div>
+<div class="update-date">업데이트 날짜: 2025-06-15</div>
+<div class="menu-card">
+<div class="card-header">월 (6/16)</div>
+<div class="card-body">
+<table class="meal-table">
+<tr><th>점심</th></tr>
+<tr><td>쌀밥<br/>건새우콩나물국<br/>돈육불고기<br/>양배추찜<br/>두부구이/양념장<br/>무생채<br/>배추김치</td></tr>
+</table>
+<table class="meal-table">
+<tr><th>저녁</th></tr>
+<tr><td>쌀밥<br/>순두부계란국<br/>고등어김치조림<br/>비엔나볶음<br/>단호박죽<br/>오이지무침<br/>깍두기</td></tr>
+</table>
+</div>
+</div>
+<div class="menu-card">
+<div class="card-header">화 (6/17)</div>
+<div class="card-body">
+<table class="meal-table">
+<tr><th>점심</th></tr>
+<tr><td>쌀밥<br/>유부국<br/>등심돈까스/소스<br/>감자채볶음<br/>두부쑥갓무침<br/>야채샐러드/소드<br/>배추김치</td></tr>
+</table>
+<table class="meal-table">
+<tr><th>저녁</th></tr>
+<tr><td>김밥볶음밥<br/>라면<br/>어묵밀떡볶이<br/>김말이튀김<br/>콩나물무침<br/>단무지<br/>배추김치</td></tr>
+</table>
+</div>
+</div>
+<div class="menu-card">
+<div class="card-header">수 (6/18)</div>
+<div class="card-body">
+<table class="meal-table">
+<tr><th>점심</th></tr>
+<tr><td>쌀밥<br/>참치김치찌개<br/>모듬장조림<br/>계란말이<br/>구이김<br/>상추겉절이<br/>깍두기</td></tr>
+</table>
+<table class="meal-table">
+<tr><th>저녁</th></tr>
+<tr><td>쌀밥<br/>황태해장국<br/>제육볶음<br/>잡채어묵말이강정<br/>호박볶음<br/>부추겉절이<br/>배추김치</td></tr>
+</table>
+</div>
+</div>
+<div class="menu-card">
+<div class="card-header">목 (6/19)</div>
+<div class="card-body">
+<table class="meal-table">
+<tr><th>점심</th></tr>
+<tr><td>쌀밥<br/>감자호박된장국<br/>삼치구이<br/>야채쫄면<br/>가지굴소스볶음<br/>연근조림<br/>배추김치</td></tr>
+</table>
+<table class="meal-table">
+<tr><th>저녁</th></tr>
+<tr><td>쌀밥<br/>버섯찌개<br/>간장찜닭<br/>오징어부추전<br/>쥐어채조림<br/>오이새콤무침<br/>배추김치</td></tr>
+</table>
+</div>
+</div>
+<div class="menu-card">
+<div class="card-header">금 (6/20)</div>
+<div class="card-body">
+<table class="meal-table">
+<tr><th>점심</th></tr>
+<tr><td>*<br/>보리열무비빔밥<br/>바지락살미역국<br/>계란후라이<br/>꽈리고추어묵볶음<br/>요구르트<br/>배추김치</td></tr>
+</table>
+<table class="meal-table">
+<tr><th>저녁</th></tr>
+<tr><td>쌀밥<br/>삼색수제비국<br/>코다리무조림<br/>치킨너겟/소스<br/>숙주미나리나물<br/>깻잎지<br/>배추김치</td></tr>
+</table>
+</div>
+</div>
+<div class="origin-info">
+            위 메뉴는 식재 수급 사정에 따라 다소 변경될 수 있습니다.<br/>원산지표시 : 돈육-국내산, 우육-호주산, 닭절-국내산, 닭정육살-브라질산, 쌀-국내산, 고등어-국내산, 오징어(중국산), 꽃게(중국산), 김치(배추-국내산, 고추가루-중국산), 코다리-러시아산, 두부류-수입산, 햄소세지(외국산), 참치(가다랑어, 원양선:태평양)<br/>식사시간<br/>점심 11:30 ~ 12:30<br/>저녁 17:00 ~ 18:10<br/>KBS광주 주간식단표 사이트 비공식 운영중 (사이트 문의 : 기술국 문재윤)<br/>
+</div>
+</div>
 </body>
 </html>
