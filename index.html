@@ -5,10 +5,27 @@
     <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="KBS광주 주간식단표 안내 페이지입니다.">
+    <meta name="theme-color" content="#3182ce">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="KBS광주 식단표">
 
     <link rel="shortcut icon" href="https://res.static.kbs.co.kr/favicon.ico">
     <link rel="shortcut icon" href="https://res.static.kbs.co.kr/favicon.png">
     <link rel="apple-touch-icon" href="https://res.static.kbs.co.kr/favorite.png">
+    <link rel="manifest" href="data:application/manifest+json,{
+        &quot;name&quot;: &quot;KBS광주 주간 식단표&quot;,
+        &quot;short_name&quot;: &quot;KBS식단&quot;,
+        &quot;start_url&quot;: &quot;/&quot;,
+        &quot;display&quot;: &quot;standalone&quot;,
+        &quot;theme_color&quot;: &quot;#3182ce&quot;,
+        &quot;background_color&quot;: &quot;#ffffff&quot;,
+        &quot;icons&quot;: [{
+            &quot;src&quot;: &quot;https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/9a81177fddc39730def58989b8a791298c187158/logo.svg&quot;,
+            &quot;sizes&quot;: &quot;192x192&quot;,
+            &quot;type&quot;: &quot;image/svg+xml&quot;
+        }]
+    }">
 
     <title>KBS광주총국 주간 식단표</title>
     <!-- Open Graph Meta Tags -->
@@ -17,202 +34,840 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/thumbnail.png">
     <meta property="og:description" content="KBS광주총국 주간 식단표 안내 페이지입니다.">
-
-    <link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: "Pretendard", sans-serif;
+        * {
             margin: 0;
-            text-align: center;
-            background-color: #f5f5f5;
-            color: #333;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #f8fafc 100%);
+            color: #1e293b;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Header */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 15px;
             box-sizing: border-box;
         }
+        
         .header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-top: 15px;
-            margin-bottom: 15px;
+            justify-content: space-between;
+            margin: 0;
             flex-wrap: wrap;
             gap: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 1000;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: 70px;
         }
-        .header img {
-            width: 22vw;
-            min-width: 100px;
+        
+        .menu-btn {
+            background: none;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .menu-btn:hover {
+            background: transparent;
+        }
+
+        .menu-icon {
+            width: 20px;
+            height: 20px;
+            position: relative;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #64748b;
+            border-radius: 1px;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+
+        .menu-icon span:nth-child(1) { top: 3px; }
+        .menu-icon span:nth-child(2) { top: 9px; }
+        .menu-icon span:nth-child(3) { top: 15px; }
+
+        .menu-btn.active .menu-icon span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 9px;
+        }
+
+        .menu-btn.active .menu-icon span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-btn.active .menu-icon span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 9px;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            gap: 15px;
+        }
+        
+        .header-content img {
+            width: 25vw;
+            min-width: 140px;
+            max-width: 180px;
             height: auto;
             vertical-align: middle;
         }
-        .header h1 {
-            font-size: 2em;
+        
+        .header-content h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
             margin: 0;
             line-height: 1;
-        }
-        .update-date {
-            text-align: right;
-            font-size: 12px;
-            margin-bottom: 15px;
-            color: #777;
-        }
-        .menu-card {
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .menu-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        .card-header {
-            background-color: #d0e8ff;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 18px;
             color: #333;
+            white-space: nowrap;
         }
-        .card-body {
-            padding: 10px;
+        
+        .update-date {
+            font-size: 0.8rem;
+            color: #777;
+            margin: 0;
         }
-        .meal-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }
-        .meal-table th, .meal-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-            font-size: 16px;
-        }
-        .meal-table th {
-            font-weight: bold;
-            color: #555;
-            background-color: #f9f9f9;
-        }
-        .meal-table td {
-            background-color: #ffffff;
-        }
-        .origin-info {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #555;
-            background: #ffffff;
-            padding: 8px;
+
+        .install-btn {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 12px 16px;
             border-radius: 8px;
-            text-align: left;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
         }
+
+        .install-btn:hover {
+            background: #2c5aa0;
+        }
+
+        .install-btn.show {
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 999;
+            padding: 80px 20px 20px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 998;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 1rem 0;
+            flex: 1;
+        }
+
+        .nav-menu li {
+            margin: 0;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-menu a:hover {
+            background: #f8fafc;
+            color: #0f172a;
+            border-left-color: #3b82f6;
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 80px;
+            padding: 1rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+            scroll-margin-top: 90px;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        
+        .day-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), 0 8px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .day-header {
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        /* 블루계열 색상 옵션들 - 모두 수요일 색상으로 통일 */
+        .color-option-1 { background-color: #4299e1; } /* 스카이 블루 */
+        .color-option-2 { background-color: #4299e1; } /* 스카이 블루 */
+        .color-option-3 { background-color: #4299e1; } /* 스카이 블루 */
+        .color-option-4 { background-color: #4299e1; } /* 스카이 블루 */
+        .color-option-5 { background-color: #4299e1; } /* 스카이 블루 */
+        .color-option-6 { background-color: #4299e1; } /* 스카이 블루 */
+        .color-option-7 { background-color: #4299e1; } /* 스카이 블루 */
+        .color-option-8 { background-color: #4299e1; } /* 스카이 블루 */
+
+        .day-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .meals-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .meal {
+            padding: 2rem 1.5rem;
+            border-right: 1px solid #f1f5f9;
+        }
+
+        .meal:last-child {
+            border-right: none;
+        }
+
+        .meal-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background-color: #f9f9f9;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .meal-list {
+            list-style: none;
+        }
+
+        .meal-list li {
+            padding: 0.5rem 0;
+            color: #334155;
+            font-weight: 400;
+            border-bottom: 1px solid #f8fafc;
+            transition: color 0.2s ease;
+            text-align: center;
+        }
+
+        .meal-list li:last-child {
+            border-bottom: none;
+        }
+
+        .meal-list li:hover {
+            color: #334155;
+        }
+
+        /* Footer */
+        .footer {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        
+        .footer:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), 0 8px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer h3 {
+            color: #1e293b;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .footer h4 {
+            color: #1e293b;
+            margin-bottom: 0.3rem;
+            margin-top: 1rem;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+
+        .footer p {
+            color: #64748b;
+            line-height: 1.4;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .meal-times {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-top: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .meal-times h4 {
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .header img { width: 25vw; min-width: 100px; }
-            .header h1 { font-size: 1.8em; }
-            .card-header { font-size: 14px; padding: 8px; }
-            .meal-table th, .meal-table td { font-size: 14px; padding: 6px; }
-            .update-date { font-size: 10px; }
-            .origin-info { font-size: 12px; }
+            .meals-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .meal {
+                border-right: none;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            .meal:last-child {
+                border-bottom: none;
+            }
+
+            .main {
+                padding: 1rem 0.75rem;
+                margin-top: 70px;
+            }
+
+            .day-title {
+                font-size: 1.2rem;
+            }
+
+            .header-content h1 {
+                font-size: 1.2rem;
+            }
+
+            .header-content img {
+                width: 20vw;
+                min-width: 80px;
+            }
+
+            .day-header {
+                padding: 0.8rem;
+            }
+
+            .meal {
+                padding: 1.2rem 1rem;
+            }
+
+            .meal-title {
+                font-size: 1rem;
+            }
+
+            .meal-list li {
+                font-size: 0.9rem;
+                padding: 0.4rem 0;
+            }
+
+            .footer {
+                padding: 1.5rem;
+            }
+
+            .footer h3 {
+                font-size: 1.1rem;
+            }
+
+            .footer p {
+                font-size: 0.85rem;
+            }
         }
+
         @media (max-width: 480px) {
-            .container { padding: 5px; }
-            .header img { width: 30vw; min-width: 90px; }
-            .header h1 { font-size: 1.4em; }
-            .card-header { font-size: 12px; padding: 6px; }
-            .meal-table th, .meal-table td { font-size: 12px; padding: 5px; }
-            .update-date { font-size: 9px; }
-            .origin-info { font-size: 10px; }
+            .header {
+                padding: 0.8rem 1rem;
+                height: 60px;
+            }
+
+            .header-content h1 {
+                font-size: 1.2rem;
+            }
+
+            .header-content img {
+                width: 18vw;
+                min-width: 70px;
+                max-width: 100px;
+            }
+
+            .header-content {
+                gap: 10px;
+            }
+
+            .update-date {
+                font-size: 10px;
+            }
+
+            .main {
+                padding: 0.8rem 0.5rem;
+                margin-top: 60px;
+            }
+
+            .day-header {
+                padding: 0.7rem;
+            }
+
+            .day-title {
+                font-size: 1.1rem;
+            }
+
+            .meal {
+                padding: 1rem 0.8rem;
+            }
+
+            .meal-title {
+                font-size: 0.95rem;
+            }
+
+            .meal-list li {
+                font-size: 0.85rem;
+                padding: 0.35rem 0;
+            }
+
+            .footer {
+                padding: 1.2rem;
+            }
+
+            .footer h3 {
+                font-size: 1rem;
+            }
+
+            .footer h4 {
+                font-size: 0.9rem;
+            }
+
+            .footer p {
+                font-size: 0.8rem;
+                line-height: 1.6;
+            }
+
+            .sidebar {
+                padding-top: 60px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        .day-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-<div class="container">
     <div class="header">
-        <a href="https://gwangju.kbs.co.kr/" target="_blank">
-            <img src="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/9a81177fddc39730def58989b8a791298c187158/logo.svg" alt="KBS 로고">
-        </a>
-        <h1>주간 식단표</h1>
+        <button class="menu-btn" id="menuBtn">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        
+        <div class="header-content">
+            <a href="https://gwangju.kbs.co.kr/" target="_blank">
+                <img src="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/9a81177fddc39730def58989b8a791298c187158/logo.svg" alt="KBS 로고">
+            </a>
+            <h1>주간 식단표</h1>
+        </div>
+        
+        <div class="update-date">업데이트 날짜 : 6/15</div>
     </div>
-    <div class="update-date">업데이트 날짜: 2025-06-15</div>
 
 
-        <div class="menu-card">
-            <div class="card-header">월 (6/16)</div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>건새우콩나물국<br>돈육불고기<br>양배추찜<br>두부구이/양념장<br>무생채<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>순두부계란국<br>고등어김치조림<br>비엔나볶음<br>단호박죽<br>오이지무침<br>깍두기</td></tr>
-                </table>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <ul class="nav-menu">
+            <li><a href="#monday">월요일</a></li>
+            <li><a href="#tuesday">화요일</a></li>
+            <li><a href="#wednesday">수요일</a></li>
+            <li><a href="#thursday">목요일</a></li>
+            <li><a href="#friday">금요일</a></li>
+        </ul>
+        
+        <!-- Install Button in Sidebar -->
+        <div style="padding: 1rem 0; border-top: 1px solid #e2e8f0; margin-top: 1rem;">
+            <p style="font-size: 0.85rem; color: #64748b; margin: 0 0 0.75rem 0; text-align: center; line-height: 1.4;">
+                모바일에서 빠른 접속을 위해<br>홈 화면에 추가해보세요
+            </p>
+            <button class="install-btn" id="installBtn">
+                📱 홈 화면에 추가하기
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Monday -->
+        <div class="day-card" id="monday">
+            <div class="day-header color-option-1">
+                <h2 class="day-title">월요일 (6/16)</h2>
+            </div>
+            <div class="meals-grid">
+                <div class="meal">
+                    <h3 class="meal-title">점심</h3>
+                    <ul class="meal-list">
+                        <li>쌀밥</li>
+                        <li>건새우콩나물국</li>
+                        <li>돈육불고기</li>
+                        <li>양배추찜</li>
+                        <li>두부구이/양념장</li>
+                        <li>무생채</li>
+                        <li>배추김치</li>
+                    </ul>
+                </div>
+                <div class="meal">
+                    <h3 class="meal-title">저녁</h3>
+                    <ul class="meal-list">
+                        <li>쌀밥</li>
+                        <li>순두부계란국</li>
+                        <li>고등어김치조림</li>
+                        <li>비엔나볶음</li>
+                        <li>단호박죽</li>
+                        <li>오이지무침</li>
+                        <li>깍두기</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="menu-card">
-            <div class="card-header">화 (6/17)</div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>유부국<br>등심돈까스/소스<br>감자채볶음<br>두부쑥갓무침<br>야채샐러드/소드<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>김밥볶음밥<br>라면<br>어묵밀떡볶이<br>김말이튀김<br>콩나물무침<br>단무지<br>배추김치</td></tr>
-                </table>
+        <!-- Tuesday -->
+        <div class="day-card" id="tuesday">
+            <div class="day-header color-option-2">
+                <h2 class="day-title">화요일 (6/17)</h2>
+            </div>
+            <div class="meals-grid">
+                <div class="meal">
+                    <h3 class="meal-title">점심</h3>
+                    <ul class="meal-list">
+                        <li>쌀밥</li>
+                        <li>유부국</li>
+                        <li>등심돈까스/소스</li>
+                        <li>감자채볶음</li>
+                        <li>두부쑥갓무침</li>
+                        <li>야채샐러드/소드</li>
+                        <li>배추김치</li>
+                    </ul>
+                </div>
+                <div class="meal">
+                    <h3 class="meal-title">저녁</h3>
+                    <ul class="meal-list">
+                        <li>김밥볶음밥</li>
+                        <li>라면</li>
+                        <li>어묵밀떡볶이</li>
+                        <li>김말이튀김</li>
+                        <li>콩나물무침</li>
+                        <li>단무지</li>
+                        <li>배추김치</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="menu-card">
-            <div class="card-header">수 (6/18)</div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>참치김치찌개<br>모듬장조림<br>계란말이<br>구이김<br>상추겉절이<br>깍두기</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>황태해장국<br>제육볶음<br>잡채어묵말이강정<br>호박볶음<br>부추겉절이<br>배추김치</td></tr>
-                </table>
+        <!-- Wednesday -->
+        <div class="day-card" id="wednesday">
+            <div class="day-header color-option-3">
+                <h2 class="day-title">수요일 (6/18)</h2>
+            </div>
+            <div class="meals-grid">
+                <div class="meal">
+                    <h3 class="meal-title">점심</h3>
+                    <ul class="meal-list">
+                        <li>쌀밥</li>
+                        <li>참치김치찌개</li>
+                        <li>모듬장조림</li>
+                        <li>계란말이</li>
+                        <li>구이김</li>
+                        <li>상추겉절이</li>
+                        <li>깍두기</li>
+                    </ul>
+                </div>
+                <div class="meal">
+                    <h3 class="meal-title">저녁</h3>
+                    <ul class="meal-list">
+                        <li>쌀밥</li>
+                        <li>황태해장국</li>
+                        <li>제육볶음</li>
+                        <li>잡채어묵말이강정</li>
+                        <li>호박볶음</li>
+                        <li>부추겉절이</li>
+                        <li>배추김치</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="menu-card">
-            <div class="card-header">목 (6/19)</div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>감자호박된장국<br>삼치구이<br>야채쫄면<br>가지굴소스볶음<br>연근조림<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>버섯찌개<br>간장찜닭<br>오징어부추전<br>쥐어채조림<br>오이새콤무침<br>배추김치</td></tr>
-                </table>
+        <!-- Thursday -->
+        <div class="day-card" id="thursday">
+            <div class="day-header color-option-4">
+                <h2 class="day-title">목요일 (6/19)</h2>
+            </div>
+            <div class="meals-grid">
+                <div class="meal">
+                    <h3 class="meal-title">점심</h3>
+                    <ul class="meal-list">
+                        <li>쌀밥</li>
+                        <li>감자호박된장국</li>
+                        <li>삼치구이</li>
+                        <li>야채쫄면</li>
+                        <li>가지굴소스볶음</li>
+                        <li>연근조림</li>
+                        <li>배추김치</li>
+                    </ul>
+                </div>
+                <div class="meal">
+                    <h3 class="meal-title">저녁</h3>
+                    <ul class="meal-list">
+                        <li>쌀밥</li>
+                        <li>버섯찌개</li>
+                        <li>간장찜닭</li>
+                        <li>오징어부추전</li>
+                        <li>쥐어채조림</li>
+                        <li>오이새콤무침</li>
+                        <li>배추김치</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="menu-card">
-            <div class="card-header">금 (6/20)</div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>*<br>보리열무비빔밥<br>바지락살미역국<br>계란후라이<br>꽈리고추어묵볶음<br>요구르트<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>삼색수제비국<br>코다리무조림<br>치킨너겟/소스<br>숙주미나리나물<br>깻잎지<br>배추김치</td></tr>
-                </table>
+        <!-- Friday -->
+        <div class="day-card" id="friday">
+            <div class="day-header color-option-5">
+                <h2 class="day-title">금요일 (6/20)</h2>
+            </div>
+            <div class="meals-grid">
+                <div class="meal">
+                    <h3 class="meal-title">점심</h3>
+                    <ul class="meal-list">
+                        <li>*</li>
+                        <li>보리열무비빔밥</li>
+                        <li>바지락살미역국</li>
+                        <li>계란후라이</li>
+                        <li>꽈리고추어묵볶음</li>
+                        <li>요구르트</li>
+                        <li>배추김치</li>
+                    </ul>
+                </div>
+                <div class="meal">
+                    <h3 class="meal-title">저녁</h3>
+                    <ul class="meal-list">
+                        <li>쌀밥</li>
+                        <li>삼색수제비국</li>
+                        <li>코다리무조림</li>
+                        <li>치킨너겟/소스</li>
+                        <li>숙주미나리나물</li>
+                        <li>깻잎지</li>
+                        <li>배추김치</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="origin-info">
-            위 메뉴는 식재 수급 사정에 따라 다소 변경될 수 있습니다.<br>원산지표시 : 돈육-국내산, 우육-호주산, 닭절-국내산, 닭정육살-브라질산, 쌀-국내산, 고등어-국내산, 오징어(중국산), 꽃게(중국산), 김치(배추-국내산, 고추가루-중국산), 코다리-러시아산, 두부류-수입산, 햄소세지(외국산), 참치(가다랑어, 원양선:태평양)<br>식사시간<br>점심 11:30 ~ 12:30<br>저녁 17:00 ~ 18:10<br>KBS광주 주간식단표 사이트 비공식 운영중 (사이트 문의 : 기술국 문재윤)<br>
-        </div>
-    </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <h3>📋 안내사항</h3>
+            <p>위 메뉴는 식재 수급 사정에 따라 다소 변경될 수 있습니다.</p>
+            
+            <h4>🌾 원산지표시</h4>
+            <p>돈육-국내산, 우육-호주산, 닭절-국내산, 닭정육살-브라질산, 쌀-국내산, 고등어-국내산, 오징어(중국산), 꽃게(중국산), 김치(배추-국내산, 고추가루-중국산), 코다리-러시아산, 두부류-수입산, 햄소세지(외국산), 참치(가다랑어, 원양선:태평양)</p>
+            
+            <h4>🕐 식사시간</h4>
+            <p>점심 11:30 ~ 12:30<br>저녁 17:30 ~ 18:30</p>
+            
+            <h4>🏢 KBS광주 주간식단표 사이트 비공식 운영중</h4>
+            <p>사이트 문의 : 기술국 문재윤</p>
+        </footer>
+    </main>
+
+    <script>
+        // Menu toggle functionality
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function toggleMenu() {
+            menuBtn.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            menuBtn.classList.remove('active');
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        sidebarOverlay.addEventListener('click', closeMenu);
+
+        // Navigate to specific day when clicking navigation links
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeMenu();
+                
+                // Calculate offset to remove white space above the day card
+                const targetId = this.getAttribute('href').substring(1);
+                const targetCard = document.getElementById(targetId);
+                if (targetCard) {
+                    const headerHeight = document.querySelector('.header').offsetHeight || 0;
+                    const updateDateHeight = document.querySelector('.update-date').offsetHeight || 0;
+                    const offset = headerHeight + updateDateHeight + 20; // 20px extra padding
+                    
+                    const elementPosition = targetCard.offsetTop;
+                    const offsetPosition = elementPosition - offset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // PWA Install functionality
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.classList.add('show');
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    installBtn.classList.remove('show');
+                }
+                deferredPrompt = null;
+            } else {
+                // iOS Safari or browsers that don't support beforeinstallprompt
+                if (navigator.share) {
+                    // Show share dialog with instructions
+                    alert('Safari: 공유 버튼 → "홈 화면에 추가"를 선택해주세요\n\nChrome: 메뉴 → "홈 화면에 추가"를 선택해주세요');
+                } else {
+                    alert('브라우저 메뉴에서 "홈 화면에 추가" 또는 "바탕화면에 추가"를 선택해주세요');
+                }
+            }
+        });
+
+        // Show install button on mobile devices
+        if (window.matchMedia('(display-mode: browser)').matches) {
+            // Check if it's mobile
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                installBtn.classList.add('show');
+            }
+        }
+
+        window.addEventListener('appinstalled', () => {
+            installBtn.classList.remove('show');
+        });
+    </script>
 </body>
 </html>
