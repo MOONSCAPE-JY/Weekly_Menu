@@ -74,26 +74,34 @@
             right: 0;
             background: white;
             z-index: 1000;
-            padding: 15px 15px 15px 0px;
+            padding: 15px 15px 15px 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             height: 70px;
         }
         
         .menu-btn {
-            background: none;
-            border: none;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
             width: 44px;
             height: 44px;
-            border-radius: 12px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .menu-btn:hover {
-            background: transparent;
+            background: #4299e1;
+            border-color: #4299e1;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(66, 153, 225, 0.3);
+        }
+
+        .menu-btn:hover .menu-icon span {
+            background: white;
         }
 
         .menu-icon {
@@ -115,6 +123,16 @@
         .menu-icon span:nth-child(1) { top: 3px; }
         .menu-icon span:nth-child(2) { top: 9px; }
         .menu-icon span:nth-child(3) { top: 15px; }
+
+        .menu-btn.active {
+            background: #4299e1;
+            border-color: #4299e1;
+            transform: scale(1.05);
+        }
+
+        .menu-btn.active .menu-icon span {
+            background: white;
+        }
 
         .menu-btn.active .menu-icon span:nth-child(1) {
             transform: rotate(45deg);
@@ -293,14 +311,11 @@
         }
         
         /* 블루계열 색상 옵션들 - 모두 수요일 색상으로 통일 */
-        .color-option-1 { background-color: #4299e1; } /* 스카이 블루 */
-        .color-option-2 { background-color: #4299e1; } /* 스카이 블루 */
-        .color-option-3 { background-color: #4299e1; } /* 스카이 블루 */
-        .color-option-4 { background-color: #4299e1; } /* 스카이 블루 */
-        .color-option-5 { background-color: #4299e1; } /* 스카이 블루 */
-        .color-option-6 { background-color: #4299e1; } /* 스카이 블루 */
-        .color-option-7 { background-color: #4299e1; } /* 스카이 블루 */
-        .color-option-8 { background-color: #4299e1; } /* 스카이 블루 */
+        .color-option-1 { background-color: #4299e1; }
+        .color-option-2 { background-color: #4299e1; }
+        .color-option-3 { background-color: #4299e1; }
+        .color-option-4 { background-color: #4299e1; }
+        .color-option-5 { background-color: #4299e1; }
 
         .day-title {
             font-size: 1.5rem;
@@ -314,6 +329,7 @@
             padding: 10px;
         }
 
+        /* Split layout for lunch and dinner */
         .meal-table {
             width: 100%;
             border-collapse: collapse;
@@ -325,6 +341,7 @@
             padding: 8px;
             text-align: center;
             font-size: 18px;
+            vertical-align: top;
         }
         
         .meal-table th {
@@ -335,6 +352,47 @@
         
         .meal-table td {
             background-color: #ffffff;
+        }
+
+        .meal-split-header {
+            display: flex;
+            width: 100%;
+        }
+
+        .meal-split-header th {
+            width: 50%;
+            border-right: 1px solid #ddd;
+        }
+
+        .meal-split-header th:last-child {
+            border-right: none;
+        }
+
+        .meal-split-content {
+            display: flex;
+            width: 100%;
+        }
+
+        .meal-split-content td {
+            width: 50%;
+            border-right: 1px solid #ddd;
+            padding: 12px 8px;
+            line-height: 1.4;
+        }
+
+        .meal-split-content td:last-child {
+            border-right: none;
+        }
+
+        .meal-items {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meal-item {
+            font-size: 16px;
+            color: #333;
         }
 
         /* Footer */
@@ -375,35 +433,8 @@
             font-size: 0.9rem;
         }
 
-        .meal-times {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 16px;
-            margin-top: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .meal-times h4 {
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
-            .meals-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .meal {
-                border-right: none;
-                border-bottom: 1px solid #f1f5f9;
-            }
-
-            .meal:last-child {
-                border-bottom: none;
-            }
-
             .main {
                 padding: 1rem 0.75rem;
                 margin-top: 70px;
@@ -430,127 +461,66 @@
             }
             
             .update-date {
-                font-size: 0.7rem;
-            }
-
-            .day-header {
-                padding: 0.5rem;
-            }
-
-            .meal {
-                padding: 1.2rem 1rem;
-            }
-
-            .meal-table th, .meal-table td {
-                font-size: 16px;
-                padding: 6px;
-            }
-
-            .footer {
-                padding: 1.5rem;
-            }
-
-            .footer h3 {
-                font-size: 1.1rem;
-            }
-
-            .footer p {
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                padding: 0.8rem 1rem;
-                height: 60px;
-            }
-
-            .header-content h1 {
-                font-size: 1.0rem;
-            }
-
-            .header-content img {
-                width: 25vw;
-                min-width: 110px;
-                max-width: 140px;
-            }
-
-            .header-content {
-                gap: 10px;
-                position: absolute;
-                left: 45%;
-                transform: translateX(-50%);
-            }
-
-            .update-date {
-                font-size: 10px;
-            }
-
-            .main {
-                padding: 0.8rem 0.5rem;
-                margin-top: 60px;
-            }
-
-            .day-header {
-                padding: 0.4rem;
-            }
-
-            .day-title {
-                font-size: 1.1rem;
-            }
-
-            .meal {
-                padding: 1rem 0.8rem;
+                font-size: 0.6rem;
+                right: 0.3rem;
             }
 
             .meal-table th, .meal-table td {
                 font-size: 14px;
-                padding: 5px;
+                padding: 6px;
+            }
+
+            .meal-item {
+                font-size: 14px;
             }
         }
 
-            .footer {
-                padding: 1.2rem;
+        @media (max-width: 480px) {
+            .header-content img {
+                width: 32vw;
+                min-width: 100px;
+                max-width: 140px;
             }
-
-            .footer h3 {
-                font-size: 1rem;
-            }
-
-            .footer h4 {
+            
+            .header-content h1 {
                 font-size: 0.9rem;
             }
-
-            .footer p {
-                font-size: 0.8rem;
-                line-height: 1.6;
+            
+            .update-date {
+                font-size: 0.55rem;
             }
 
-            .sidebar {
-                padding-top: 60px;
+            .meal-table th, .meal-table td {
+                font-size: 13px;
+                padding: 4px;
             }
-        }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+            .meal-item {
+                font-size: 13px;
+            }
         }
 
         /* Animations */
-        .day-card {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        .day-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .day-card:nth-child(1) { animation-delay: 0.1s; }
+        .day-card:nth-child(2) { animation-delay: 0.2s; }
+        .day-card:nth-child(3) { animation-delay: 0.3s; }
+        .day-card:nth-child(4) { animation-delay: 0.4s; }
+        .day-card:nth-child(5) { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
@@ -572,8 +542,6 @@
         
         <div class="update-date">업데이트 날짜 : 6/15</div>
     </div>
-
-
 
     <!-- Sidebar Overlay -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -608,12 +576,38 @@
             </div>
             <div class="card-body">
                 <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>건새우콩나물국<br>돈육불고기<br>양배추찜<br>두부구이/양념장<br>무생채<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>순두부계란국<br>고등어김치조림<br>비엔나볶음<br>단호박죽<br>오이지무침<br>깍두기</td></tr>
+                    <thead>
+                        <tr class="meal-split-header">
+                            <th>점심</th>
+                            <th>저녁</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="meal-split-content">
+                            <td>
+                                <div class="meal-items">
+                                    <div class="meal-item">쌀밥</div>
+                                    <div class="meal-item">건새우콩나물국</div>
+                                    <div class="meal-item">돈육불고기</div>
+                                    <div class="meal-item">양배추찜</div>
+                                    <div class="meal-item">두부구이/양념장</div>
+                                    <div class="meal-item">무생채</div>
+                                    <div class="meal-item">배추김치</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="meal-items">
+                                    <div class="meal-item">쌀밥</div>
+                                    <div class="meal-item">순두부계란국</div>
+                                    <div class="meal-item">고등어김치조림</div>
+                                    <div class="meal-item">비엔나볶음</div>
+                                    <div class="meal-item">단호박죽</div>
+                                    <div class="meal-item">오이지무침</div>
+                                    <div class="meal-item">깍두기</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -625,12 +619,38 @@
             </div>
             <div class="card-body">
                 <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>유부국<br>등심돈까스/소스<br>감자채볶음<br>두부쑥갓무침<br>야채샐러드/소드<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>김밥볶음밥<br>라면<br>어묵밀떡볶이<br>김말이튀김<br>콩나물무침<br>단무지<br>배추김치</td></tr>
+                    <thead>
+                        <tr class="meal-split-header">
+                            <th>점심</th>
+                            <th>저녁</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="meal-split-content">
+                            <td>
+                                <div class="meal-items">
+                                    <div class="meal-item">쌀밥</div>
+                                    <div class="meal-item">유부국</div>
+                                    <div class="meal-item">등심돈까스/소스</div>
+                                    <div class="meal-item">감자채볶음</div>
+                                    <div class="meal-item">두부쑥갓무침</div>
+                                    <div class="meal-item">야채샐러드/소드</div>
+                                    <div class="meal-item">배추김치</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="meal-items">
+                                    <div class="meal-item">김밥볶음밥</div>
+                                    <div class="meal-item">라면</div>
+                                    <div class="meal-item">어묵밀떡볶이</div>
+                                    <div class="meal-item">김말이튀김</div>
+                                    <div class="meal-item">콩나물무침</div>
+                                    <div class="meal-item">단무지</div>
+                                    <div class="meal-item">배추김치</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -642,12 +662,38 @@
             </div>
             <div class="card-body">
                 <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>참치김치찌개<br>모듬장조림<br>계란말이<br>구이김<br>상추겉절이<br>깍두기</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>황태해장국<br>제육볶음<br>잡채어묵말이강정<br>호박볶음<br>부추겉절이<br>배추김치</td></tr>
+                    <thead>
+                        <tr class="meal-split-header">
+                            <th>점심</th>
+                            <th>저녁</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="meal-split-content">
+                            <td>
+                                <div class="meal-items">
+                                    <div class="meal-item">쌀밥</div>
+                                    <div class="meal-item">참치김치찌개</div>
+                                    <div class="meal-item">모듬장조림</div>
+                                    <div class="meal-item">계란말이</div>
+                                    <div class="meal-item">구이김</div>
+                                    <div class="meal-item">상추겉절이</div>
+                                    <div class="meal-item">깍두기</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="meal-items">
+                                    <div class="meal-item">쌀밥</div>
+                                    <div class="meal-item">황태해장국</div>
+                                    <div class="meal-item">제육볶음</div>
+                                    <div class="meal-item">잡채어묵말이강정</div>
+                                    <div class="meal-item">호박볶음</div>
+                                    <div class="meal-item">부추겉절이</div>
+                                    <div class="meal-item">배추김치</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -659,12 +705,38 @@
             </div>
             <div class="card-body">
                 <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>쌀밥<br>감자호박된장국<br>삼치구이<br>야채쫄면<br>가지굴소스볶음<br>연근조림<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>버섯찌개<br>간장찜닭<br>오징어부추전<br>쥐어채조림<br>오이새콤무침<br>배추김치</td></tr>
+                    <thead>
+                        <tr class="meal-split-header">
+                            <th>점심</th>
+                            <th>저녁</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="meal-split-content">
+                            <td>
+                                <div class="meal-items">
+                                    <div class="meal-item">쌀밥</div>
+                                    <div class="meal-item">감자호박된장국</div>
+                                    <div class="meal-item">삼치구이</div>
+                                    <div class="meal-item">야채쫄면</div>
+                                    <div class="meal-item">가지굴소스볶음</div>
+                                    <div class="meal-item">연근조림</div>
+                                    <div class="meal-item">배추김치</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="meal-items">
+                                    <div class="meal-item">쌀밥</div>
+                                    <div class="meal-item">버섯찌개</div>
+                                    <div class="meal-item">간장찜닭</div>
+                                    <div class="meal-item">오징어부추전</div>
+                                    <div class="meal-item">쥐어채조림</div>
+                                    <div class="meal-item">오이새콤무침</div>
+                                    <div class="meal-item">배추김치</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -676,12 +748,38 @@
             </div>
             <div class="card-body">
                 <table class="meal-table">
-                    <tr><th>점심</th></tr>
-                    <tr><td>*<br>보리열무비빔밥<br>바지락살미역국<br>계란후라이<br>꽈리고추어묵볶음<br>요구르트<br>배추김치</td></tr>
-                </table>
-                <table class="meal-table">
-                    <tr><th>저녁</th></tr>
-                    <tr><td>쌀밥<br>삼색수제비국<br>코다리무조림<br>치킨너겟/소스<br>숙주미나리나물<br>깻잎지<br>배추김치</td></tr>
+                    <thead>
+                        <tr class="meal-split-header">
+                            <th>점심</th>
+                            <th>저녁</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="meal-split-content">
+                            <td>
+                                <div class="meal-items">
+                                    <div class="meal-item">*</div>
+                                    <div class="meal-item">보리열무비빔밥</div>
+                                    <div class="meal-item">바지락살미역국</div>
+                                    <div class="meal-item">계란후라이</div>
+                                    <div class="meal-item">꽈리고추어묵볶음</div>
+                                    <div class="meal-item">요구르트</div>
+                                    <div class="meal-item">배추김치</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="meal-items">
+                                    <div class="meal-item">쌀밥</div>
+                                    <div class="meal-item">삼색수제비국</div>
+                                    <div class="meal-item">코다리무조림</div>
+                                    <div class="meal-item">치킨너겟/소스</div>
+                                    <div class="meal-item">숙주미나리나물</div>
+                                    <div class="meal-item">깻잎지</div>
+                                    <div class="meal-item">배추김치</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
