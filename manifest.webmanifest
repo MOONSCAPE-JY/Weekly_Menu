@@ -1,0 +1,22 @@
+{
+  "name": "KBS광주 주간 식단표",
+  "short_name": "KBS식단",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#3182ce",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://res.static.kbs.co.kr/favorite.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://res.static.kbs.co.kr/favorite.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
