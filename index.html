@@ -14,13 +14,11 @@
 <link href="https://res.static.kbs.co.kr/favorite.png" rel="apple-touch-icon"/>
 <link href="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/manifest.webmanifest" rel="manifest"/>
 <title>KBS광주총국 주간 식단표</title>
-<!-- Open Graph Meta Tags -->
 <meta content="kbsmenu.com" property="og:url"/>
 <meta content="KBS광주 주간식단표" property="og:title"/>
 <meta content="website" property="og:type"/>
 <meta content="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/thumbnail.png" property="og:image"/>
 <meta content="KBS광주총국 주간 식단표 안내 페이지입니다." property="og:description"/>
-<!-- Google Analytics -->
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
         * {
@@ -120,7 +118,7 @@
             margin: 0;
             white-space: nowrap;
             position: absolute;
-            right: 0.5rem;
+            right: 0.8rem; /* Modified: Added slight right margin */
             top: 50%;
             transform: translateY(-50%);
             z-index: 10;
@@ -257,7 +255,7 @@
         }
 
         .day-header {
-            padding: 0.3rem;
+            padding-top: 0.2rem; padding-bottom: 0.2rem;
             text-align: center;
         }
         
@@ -423,7 +421,7 @@
             
             .update-date {
                 font-size: 0.6rem;
-                right: 0.3rem;
+                right: 0.6rem; /* Modified: Added slight right margin */
             }
 
             .meal-table th, .meal-table td {
@@ -449,6 +447,7 @@
             
             .update-date {
                 font-size: 0.55rem;
+                right: 0.5rem; /* Modified: Added slight right margin */
             }
 
             .meal-table th, .meal-table td {
@@ -516,7 +515,7 @@
 
 
         .day-header {
-            padding: 0.9rem;
+            padding-top: 0.2rem; padding-bottom: 0.2rem;
             text-align: center;
         }
 
@@ -554,12 +553,12 @@
 
 
             .day-header {
-                padding: 0.8rem;
+                padding-top: 0.2rem; padding-bottom: 0.2rem;
             }
 
 
             .day-header {
-                padding: 0.7rem;
+                padding-top: 0.2rem; padding-bottom: 0.2rem;
             }
 
 
@@ -729,9 +728,6 @@
 }
 
 </style>
-<!-- Google tag (gtag.js) -->
-<!-- Google tag (gtag.js) -->
-<!-- Google tag (gtag.js) -->
 </head>
 <body>
 <div class="header">
@@ -750,9 +746,7 @@
 </div>
 <div class="update-date">업데이트 날짜 : 6/15</div>
 </div>
-<!-- Sidebar Overlay -->
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
-<!-- Sidebar -->
 <nav class="sidebar" id="sidebar">
 <ul class="nav-menu">
 <li><a href="#monday">월요일</a></li>
@@ -761,7 +755,6 @@
 <li><a href="#thursday">목요일</a></li>
 <li><a href="#friday">금요일</a></li>
 </ul>
-<!-- Install Button in Sidebar -->
 <div style="padding: 0.5rem 1rem; border-top: 1px solid #e2e8f0; margin-top: auto; position: relative;">
 <p style="font-size: 0.8rem; color: #64748b; margin: 0 0 0.4rem 0; text-align: center; line-height: 1.2;">
                 모바일에서 빠른 접속을 위해<br/>홈 화면에 추가해보세요
@@ -771,9 +764,7 @@
             </button>
 </div>
 </nav>
-<!-- Main Content -->
 <main class="main">
-<!-- Monday -->
 <div class="day-card" id="monday">
 <div class="day-header color-option-1">
 <h2 class="day-title">월요일 (6/16)</h2>
@@ -815,7 +806,6 @@
 </table>
 </div>
 </div>
-<!-- Tuesday -->
 <div class="day-card" id="tuesday">
 <div class="day-header color-option-2">
 <h2 class="day-title">화요일 (6/17)</h2>
@@ -857,7 +847,6 @@
 </table>
 </div>
 </div>
-<!-- Wednesday -->
 <div class="day-card" id="wednesday">
 <div class="day-header color-option-3">
 <h2 class="day-title">수요일 (6/18)</h2>
@@ -899,7 +888,6 @@
 </table>
 </div>
 </div>
-<!-- Thursday -->
 <div class="day-card" id="thursday">
 <div class="day-header color-option-4">
 <h2 class="day-title">목요일 (6/19)</h2>
@@ -941,7 +929,6 @@
 </table>
 </div>
 </div>
-<!-- Friday -->
 <div class="day-card" id="friday">
 <div class="day-header color-option-5">
 <h2 class="day-title">금요일 (6/20)</h2>
@@ -983,7 +970,6 @@
 </table>
 </div>
 </div>
-<!-- Footer -->
 <footer class="footer">
 <div style="text-align: left;">
 <h3>📋 안내사항</h3>
@@ -997,19 +983,15 @@
 </div>
 </footer>
 </main>
-<!-- Today's Menu Floating Button -->
 <button class="today-float-btn" id="todayFloatBtn" title="오늘의 식단">
         🍽️
     </button>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0PVEQMSZ2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-R0PVEQMSZ2');
-</script>
-<script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R0PVEQMSZ2"></script><script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R0PVEQMSZ2');
+    </script><script>
         // Menu toggle functionality
         const menuBtn = document.getElementById('menuBtn');
         const sidebar = document.getElementById('sidebar');
@@ -1041,31 +1023,17 @@
                 const targetElement = document.getElementById(targetId);
                 
                 if (targetElement) {
-                    // Get the day title element specifically and use its absolute position
-                    const dayTitle = targetElement.querySelector('.day-title');
-                    if (dayTitle) {
-                        // Get header height to position title right below it
-                        const header = document.querySelector('.header');
-                        const headerHeight = header ? header.offsetHeight : 70;
-                        
-                        // Get absolute position of the day title
-                        let element = dayTitle;
-                        let offsetTop = 0;
-                        
-                        // Calculate absolute position by adding all parent offsets
-                        while (element) {
-                            offsetTop += element.offsetTop;
-                            element = element.offsetParent;
-                        }
-                        
-                        // Position day title text right below the header with slight spacing
-                        const scrollToPosition = offsetTop - headerHeight - 11;
-                        
-                        window.scrollTo({
-                            top: Math.max(0, scrollToPosition),
-                            behavior: 'smooth'
-                        });
-                    }
+                    // Get header height to position title right below it
+                    const header = document.querySelector('.header');
+                    const headerHeight = header ? header.offsetHeight : 70;
+                    
+                    // Scroll to the top of the day-card, accounting for the fixed header
+                    const scrollToPosition = targetElement.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, scrollToPosition),
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
