@@ -588,7 +588,7 @@
         </ul>
         
         <!-- Install Button in Sidebar -->
-        <div style="padding: 0.5rem 0; border-top: 1px solid #e2e8f0; margin-top: 0;">
+        <div style="padding: 0.5rem 0; border-top: 1px solid #e2e8f0; margin-top: 1rem; position: absolute; bottom: 1rem; left: 0; right: 0;">
             <p style="font-size: 0.8rem; color: #64748b; margin: 0 0 0.4rem 0; text-align: center; line-height: 1.2;">
                 모바일에서 빠른 접속을 위해<br>홈 화면에 추가해보세요
             </p>
@@ -730,19 +730,22 @@
                 e.preventDefault();
                 closeMenu();
                 
-                // Calculate offset to remove white space above the day card
+                // Get target element and scroll to it
                 const targetId = this.getAttribute('href').substring(1);
-                const targetCard = document.getElementById(targetId);
-                if (targetCard) {
-                    const headerHeight = document.querySelector('.header').offsetHeight || 0;
-                    const updateDateHeight = document.querySelector('.update-date').offsetHeight || 0;
-                    const offset = headerHeight + updateDateHeight + 20; // 20px extra padding
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    // Get the header element to calculate its height
+                    const header = document.querySelector('.header');
+                    const headerHeight = header ? header.offsetHeight : 0;
                     
-                    const elementPosition = targetCard.offsetTop;
-                    const offsetPosition = elementPosition - offset;
+                    // Calculate position with header offset
+                    const elementPosition = targetElement.offsetTop;
+                    const scrollToPosition = elementPosition - headerHeight - 10;
                     
+                    // Scroll to the calculated position
                     window.scrollTo({
-                        top: offsetPosition,
+                        top: Math.max(0, scrollToPosition),
                         behavior: 'smooth'
                     });
                 }
@@ -771,7 +774,7 @@
                 // iOS Safari or browsers that don't support beforeinstallprompt
                 if (navigator.share) {
                     // Show share dialog with instructions
-                    alert('Safari: 공유 버튼 → "홈 화면에 추가"를 선택해주세요\n\nChrome: 메뉴 → "홈 화면에 추가"를 선택해주세요');
+                    alert('Chrome: 메뉴 → "홈 화면에 추가"를 선택해주세요\n\nSafari: 공유 버튼 → "홈 화면에 추가"를 선택해주세요');
                 } else {
                     alert('브라우저 메뉴에서 "홈 화면에 추가" 또는 "바탕화면에 추가"를 선택해주세요');
                 }
