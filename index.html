@@ -894,10 +894,6 @@
 <button class="today-float-btn" id="todayFloatBtn" title="오늘의 식단">
         🍽️
     </button>
-
-
-
-
 <script>
   document.getElementById("todayFloatBtn").addEventListener("click", () => {
     const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday"];
@@ -908,6 +904,30 @@
       const offset = element.offsetTop - 70;
       window.scrollTo({ top: offset, behavior: "smooth" });
     }
+  });
+</script>
+
+<script>
+  // 햄버거 토글 기능
+  const toggle = document.querySelector(".menu-toggle");
+  const menu = document.querySelector(".menu");
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("open");
+  });
+
+  // 메뉴 클릭 시 해당 요일로 스크롤 이동
+  const menuLinks = document.querySelectorAll(".menu a");
+  menuLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href").replace("#", "");
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const offset = targetElement.offsetTop - 70;
+        window.scrollTo({ top: offset, behavior: "smooth" });
+      }
+      menu.classList.remove("open");
+    });
   });
 </script>
 </body>
