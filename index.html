@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 
 <html lang="ko">
-<head>
+<head><meta content="noai, noimageai" name="generator"/><meta content="noindex, nofollow, noarchive" name="bingbot"/><meta content="noindex, nofollow, noimageindex, noarchive" name="googlebot"/><meta content="noindex, nofollow, noarchive" name="robots"/>
 <meta charset="utf-8"/>
-<meta content="noindex, nofollow, noarchive, nosnippet, noimageindex" name="robots"/>
-<meta content="noindex, nofollow, noarchive, nosnippet, noimageindex" name="googlebot"/>
-<meta content="noindex, nofollow, noarchive, nosnippet, noimageindex" name="bingbot"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="KBS광주 주간식단표 안내 페이지입니다." name="description"/>
 <meta content="#3182ce" name="theme-color"/>
@@ -620,8 +617,6 @@
             }</style>
 <!-- Google tag (gtag.js) -->
 <!-- Google tag (gtag.js) -->
-
-
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R0PVEQMSZ2"></script>
 <script>
@@ -1058,5 +1053,17 @@
             scrollToTodayMeal();
         });
     </script>
+
+<script>
+  document.getElementById("todayFloatBtn").addEventListener("click", () => {
+    const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday"];
+    const todayIndex = new Date().getDay();
+    const dayId = days[todayIndex];
+    const element = document.getElementById(dayId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+</script>
 </body>
 </html>
