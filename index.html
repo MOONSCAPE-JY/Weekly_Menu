@@ -93,7 +93,7 @@
         }
 
         .menu-btn:hover {
-            background: #4299e1;
+            background: transparent;
             border-color: #4299e1;
             transform: scale(1.05);
             box-shadow: 0 4px 8px rgba(66, 153, 225, 0.3);
@@ -124,7 +124,7 @@
         .menu-icon span:nth-child(3) { top: 15px; }
 
         .menu-btn.active {
-            background: #4299e1;
+            background: transparent;
             border-color: #4299e1;
             transform: scale(1.05);
         }
@@ -188,8 +188,8 @@
         }
 
         .install-btn {
-            background: #4299e1;
-            color: white;
+            background: transparent;
+            color: #4299e1;
             border: none;
             padding: 12px 16px;
             border-radius: 20px;
@@ -212,6 +212,37 @@
 
         .install-btn.show {
             display: flex;
+        }
+
+        /* Today's Menu Floating Button */
+        .today-float-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: transparent;
+            color: #4299e1;
+            border: none;
+            border-radius: 50%;
+            box-shadow: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .today-float-btn:hover {
+            background: #2c5aa0;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(66, 153, 225, 0.6);
+        }
+
+        .today-float-btn:active {
+            transform: scale(0.95);
         }
 
         /* Sidebar */
@@ -319,7 +350,7 @@
         .day-title {
             font-size: 1.3rem;
             font-weight: 600;
-            color: white;
+            color: #4299e1;
             margin: 0;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
@@ -811,6 +842,11 @@
         </footer>
     </main>
 
+    <!-- Today's Menu Floating Button -->
+    <button class="today-float-btn" id="todayFloatBtn" title="오늘의 식단">
+        🍽️
+    </button>
+
     <script>
         // Menu toggle functionality
         const menuBtn = document.getElementById('menuBtn');
@@ -911,6 +947,63 @@
 
         window.addEventListener('appinstalled', () => {
             installBtn.classList.remove('show');
+        });
+
+        // Today's Menu Function
+        function scrollToTodayMeal() {
+            const today = new Date();
+            const dayOfWeek = today.getDay(); // 0=Sunday, 1=Monday, ..., 6=Saturday
+
+            let targetId = '';
+            switch(dayOfWeek) {
+                case 1: targetId = 'monday'; break;
+                case 2: targetId = 'tuesday'; break;
+                case 3: targetId = 'wednesday'; break;
+                case 4: targetId = 'thursday'; break;
+                case 5: targetId = 'friday'; break;
+                default: 
+                    alert('주말에는 식단이 제공되지 않습니다. 😊');
+                    return;
+            }
+
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                const dayTitle = targetElement.querySelector('.day-title');
+                if (dayTitle) {
+                    const header = document.querySelector('.header');
+                    const headerHeight = header ? header.offsetHeight : 70;
+
+                    let element = dayTitle;
+                    let offsetTop = 0;
+
+                    while (element) {
+                        offsetTop += element.offsetTop;
+                        element = element.offsetParent;
+                    }
+
+                    const scrollToPosition = offsetTop - headerHeight - 11;
+
+                    window.scrollTo({
+                        top: Math.max(0, scrollToPosition),
+                        behavior: 'smooth'
+                    });
+
+                    targetElement.style.transform = 'scale(1.02)';
+                    targetElement.style.boxShadow = '0 8px 25px rgba(66, 153, 225, 0.3)';
+
+                    setTimeout(() => {
+                        targetElement.style.transform = '';
+                        targetElement.style.boxShadow = '';
+                    }, 2000);
+                }
+            }
+        }
+
+        // Add event listener for today's floating menu button
+        const todayFloatBtn = document.getElementById('todayFloatBtn');
+        todayFloatBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToTodayMeal();
         });
     </script>
 </body>
