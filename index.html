@@ -357,7 +357,10 @@
         .footer {
             background: white;
             border-radius: 16px; /* 요일별 카드와 동일한 라운드 값을 유지 */
-            padding: 2rem;
+            padding-top: 2rem;
+            padding-bottom: 4rem; /* 하단 패딩을 4rem으로 증가 */
+            padding-left: 2rem;
+            padding-right: 2rem;
             margin-top: 2rem; /* 여백을 2rem으로 줄여 다른 카드와 통일 */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
             transform: translateY(0);
@@ -871,7 +874,7 @@
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
             if (outcome === 'accepted') {
-                installBtn.classList.remove('show'); // This line was uncommented as per user's last request
+                installBtn.classList.remove('show');
             }
             deferredPrompt = null;
         } else {
@@ -885,14 +888,14 @@
         }
     });
 
-    // window.addEventListener('appinstalled', () => {
-    //     installBtn.classList.remove('show'); // This line was previously commented out, leaving it as is.
-    // });
+    window.addEventListener('appinstalled', () => {
+        installBtn.classList.remove('show');
+    });
 
     // Show install button on mobile devices (initial check)
     // This part ensures the button is initially visible on mobile in browser mode
     if (window.matchMedia('(display-mode: browser)').matches) {
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        if (/Android|webOS|iPhone|iPad|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             installBtn.classList.add('show');
         }
     }
