@@ -44,6 +44,8 @@
 
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            text-align: center;
             background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #f8fafc 100%);
             color: #1e293b;
             line-height: 1.6;
@@ -64,7 +66,7 @@
             align-items: center;
             justify-content: space-between;
             margin: 0;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             gap: 10px;
             position: fixed;
             top: 0;
@@ -132,20 +134,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            flex: 1;
-            gap: 15px;
+            position: absolute;
+            left: 45%;
+            transform: translateX(-50%);
+            gap: 12px;
+            flex-wrap: nowrap;
         }
         
         .header-content img {
-            width: 28vw;
-            min-width: 155px;
-            max-width: 200px;
+            width: 32vw;
+            min-width: 180px;
+            max-width: 220px;
             height: auto;
             vertical-align: middle;
         }
         
         .header-content h1 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             margin: 0;
             line-height: 1;
@@ -154,9 +159,15 @@
         }
         
         .update-date {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #777;
             margin: 0;
+            white-space: nowrap;
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
         }
 
         .install-btn {
@@ -265,7 +276,7 @@
             margin-bottom: 2rem;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
-            scroll-margin-top: 90px;
+            scroll-margin-top: 75px;
             transform: translateY(0);
             transition: all 0.3s ease;
         }
@@ -276,7 +287,7 @@
         }
 
         .day-header {
-            padding: 1rem;
+            padding: 0.6rem;
             text-align: center;
         }
         
@@ -298,36 +309,31 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
-        .meals-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .card-body {
+            padding: 10px;
         }
 
-        .meal {
-            padding: 2rem 1.5rem;
-            border-right: 1px solid #f1f5f9;
+        .meal-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
         }
-
-        .meal:last-child {
-            border-right: none;
+        
+        .meal-table th, .meal-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 16px;
         }
-
-        .meal-title {
-            font-size: 1.125rem;
-            font-weight: 600;
+        
+        .meal-table th {
+            font-weight: bold;
             color: #555;
-            margin-bottom: 1rem;
-            text-align: center;
-            padding: 0.5rem;
             background-color: #f9f9f9;
-            border-bottom: 2px solid #e2e8f0;
         }
-
-        .meal-content {
-            padding: 1rem;
-            color: #334155;
-            line-height: 1.6;
-            text-align: center;
+        
+        .meal-table td {
+            background-color: #ffffff;
         }
 
         /* Footer */
@@ -407,29 +413,36 @@
             }
 
             .header-content h1 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
 
             .header-content img {
-                width: 20vw;
-                min-width: 80px;
+                width: 28vw;
+                min-width: 120px;
+            }
+            
+            .header-content {
+                gap: 8px;
+                position: absolute;
+                left: 45%;
+                transform: translateX(-50%);
+            }
+            
+            .update-date {
+                font-size: 0.7rem;
             }
 
             .day-header {
-                padding: 0.8rem;
+                padding: 0.5rem;
             }
 
             .meal {
                 padding: 1.2rem 1rem;
             }
 
-            .meal-title {
-                font-size: 1rem;
-            }
-
-            .meal-list li {
-                font-size: 0.9rem;
-                padding: 0.4rem 0;
+            .meal-table th, .meal-table td {
+                font-size: 14px;
+                padding: 6px;
             }
 
             .footer {
@@ -452,17 +465,20 @@
             }
 
             .header-content h1 {
-                font-size: 1.2rem;
+                font-size: 1.0rem;
             }
 
             .header-content img {
-                width: 18vw;
-                min-width: 70px;
-                max-width: 100px;
+                width: 25vw;
+                min-width: 110px;
+                max-width: 140px;
             }
 
             .header-content {
                 gap: 10px;
+                position: absolute;
+                left: 45%;
+                transform: translateX(-50%);
             }
 
             .update-date {
@@ -475,7 +491,7 @@
             }
 
             .day-header {
-                padding: 0.7rem;
+                padding: 0.4rem;
             }
 
             .day-title {
@@ -486,14 +502,11 @@
                 padding: 1rem 0.8rem;
             }
 
-            .meal-title {
-                font-size: 0.95rem;
+            .meal-table th, .meal-table td {
+                font-size: 12px;
+                padding: 5px;
             }
-
-            .meal-list li {
-                font-size: 0.85rem;
-                padding: 0.35rem 0;
-            }
+        }
 
             .footer {
                 padding: 1.2rem;
@@ -575,8 +588,8 @@
         </ul>
         
         <!-- Install Button in Sidebar -->
-        <div style="padding: 0.75rem 0; border-top: 1px solid #e2e8f0; margin-top: 0.5rem;">
-            <p style="font-size: 0.85rem; color: #64748b; margin: 0 0 0.5rem 0; text-align: center; line-height: 1.4;">
+        <div style="padding: 0.5rem 0; border-top: 1px solid #e2e8f0; margin-top: 0;">
+            <p style="font-size: 0.8rem; color: #64748b; margin: 0 0 0.4rem 0; text-align: center; line-height: 1.2;">
                 모바일에서 빠른 접속을 위해<br>홈 화면에 추가해보세요
             </p>
             <button class="install-btn" id="installBtn">
@@ -592,31 +605,15 @@
             <div class="day-header color-option-1">
                 <h2 class="day-title">월요일 (6/16)</h2>
             </div>
-            <div class="meals-grid">
-                <div class="meal">
-                    <h3 class="meal-title">점심</h3>
-                    <div class="meal-content">
-                        쌀밥<br>
-                        건새우콩나물국<br>
-                        돈육불고기<br>
-                        양배추찜<br>
-                        두부구이/양념장<br>
-                        무생채<br>
-                        배추김치
-                    </div>
-                </div>
-                <div class="meal">
-                    <h3 class="meal-title">저녁</h3>
-                    <div class="meal-content">
-                        쌀밥<br>
-                        순두부계란국<br>
-                        고등어김치조림<br>
-                        비엔나볶음<br>
-                        단호박죽<br>
-                        오이지무침<br>
-                        깍두기
-                    </div>
-                </div>
+            <div class="card-body">
+                <table class="meal-table">
+                    <tr><th>점심</th></tr>
+                    <tr><td>쌀밥<br>건새우콩나물국<br>돈육불고기<br>양배추찜<br>두부구이/양념장<br>무생채<br>배추김치</td></tr>
+                </table>
+                <table class="meal-table">
+                    <tr><th>저녁</th></tr>
+                    <tr><td>쌀밥<br>순두부계란국<br>고등어김치조림<br>비엔나볶음<br>단호박죽<br>오이지무침<br>깍두기</td></tr>
+                </table>
             </div>
         </div>
 
@@ -625,31 +622,15 @@
             <div class="day-header color-option-2">
                 <h2 class="day-title">화요일 (6/17)</h2>
             </div>
-            <div class="meals-grid">
-                <div class="meal">
-                    <h3 class="meal-title">점심</h3>
-                    <div class="meal-content">
-                        쌀밥<br>
-                        유부국<br>
-                        등심돈까스/소스<br>
-                        감자채볶음<br>
-                        두부쑥갓무침<br>
-                        야채샐러드/소드<br>
-                        배추김치
-                    </div>
-                </div>
-                <div class="meal">
-                    <h3 class="meal-title">저녁</h3>
-                    <div class="meal-content">
-                        김밥볶음밥<br>
-                        라면<br>
-                        어묵밀떡볶이<br>
-                        김말이튀김<br>
-                        콩나물무침<br>
-                        단무지<br>
-                        배추김치
-                    </div>
-                </div>
+            <div class="card-body">
+                <table class="meal-table">
+                    <tr><th>점심</th></tr>
+                    <tr><td>쌀밥<br>유부국<br>등심돈까스/소스<br>감자채볶음<br>두부쑥갓무침<br>야채샐러드/소드<br>배추김치</td></tr>
+                </table>
+                <table class="meal-table">
+                    <tr><th>저녁</th></tr>
+                    <tr><td>김밥볶음밥<br>라면<br>어묵밀떡볶이<br>김말이튀김<br>콩나물무침<br>단무지<br>배추김치</td></tr>
+                </table>
             </div>
         </div>
 
@@ -658,31 +639,15 @@
             <div class="day-header color-option-3">
                 <h2 class="day-title">수요일 (6/18)</h2>
             </div>
-            <div class="meals-grid">
-                <div class="meal">
-                    <h3 class="meal-title">점심</h3>
-                    <div class="meal-content">
-                        쌀밥<br>
-                        참치김치찌개<br>
-                        모듬장조림<br>
-                        계란말이<br>
-                        구이김<br>
-                        상추겉절이<br>
-                        깍두기
-                    </div>
-                </div>
-                <div class="meal">
-                    <h3 class="meal-title">저녁</h3>
-                    <div class="meal-content">
-                        쌀밥<br>
-                        황태해장국<br>
-                        제육볶음<br>
-                        잡채어묵말이강정<br>
-                        호박볶음<br>
-                        부추겉절이<br>
-                        배추김치
-                    </div>
-                </div>
+            <div class="card-body">
+                <table class="meal-table">
+                    <tr><th>점심</th></tr>
+                    <tr><td>쌀밥<br>참치김치찌개<br>모듬장조림<br>계란말이<br>구이김<br>상추겉절이<br>깍두기</td></tr>
+                </table>
+                <table class="meal-table">
+                    <tr><th>저녁</th></tr>
+                    <tr><td>쌀밥<br>황태해장국<br>제육볶음<br>잡채어묵말이강정<br>호박볶음<br>부추겉절이<br>배추김치</td></tr>
+                </table>
             </div>
         </div>
 
@@ -691,31 +656,15 @@
             <div class="day-header color-option-4">
                 <h2 class="day-title">목요일 (6/19)</h2>
             </div>
-            <div class="meals-grid">
-                <div class="meal">
-                    <h3 class="meal-title">점심</h3>
-                    <div class="meal-content">
-                        쌀밥<br>
-                        감자호박된장국<br>
-                        삼치구이<br>
-                        야채쫄면<br>
-                        가지굴소스볶음<br>
-                        연근조림<br>
-                        배추김치
-                    </div>
-                </div>
-                <div class="meal">
-                    <h3 class="meal-title">저녁</h3>
-                    <div class="meal-content">
-                        쌀밥<br>
-                        버섯찌개<br>
-                        간장찜닭<br>
-                        오징어부추전<br>
-                        쥐어채조림<br>
-                        오이새콤무침<br>
-                        배추김치
-                    </div>
-                </div>
+            <div class="card-body">
+                <table class="meal-table">
+                    <tr><th>점심</th></tr>
+                    <tr><td>쌀밥<br>감자호박된장국<br>삼치구이<br>야채쫄면<br>가지굴소스볶음<br>연근조림<br>배추김치</td></tr>
+                </table>
+                <table class="meal-table">
+                    <tr><th>저녁</th></tr>
+                    <tr><td>쌀밥<br>버섯찌개<br>간장찜닭<br>오징어부추전<br>쥐어채조림<br>오이새콤무침<br>배추김치</td></tr>
+                </table>
             </div>
         </div>
 
@@ -724,47 +673,33 @@
             <div class="day-header color-option-5">
                 <h2 class="day-title">금요일 (6/20)</h2>
             </div>
-            <div class="meals-grid">
-                <div class="meal">
-                    <h3 class="meal-title">점심</h3>
-                    <div class="meal-content">
-                        *<br>
-                        보리열무비빔밥<br>
-                        바지락살미역국<br>
-                        계란후라이<br>
-                        꽈리고추어묵볶음<br>
-                        요구르트<br>
-                        배추김치
-                    </div>
-                </div>
-                <div class="meal">
-                    <h3 class="meal-title">저녁</h3>
-                    <div class="meal-content">
-                        쌀밥<br>
-                        삼색수제비국<br>
-                        코다리무조림<br>
-                        치킨너겟/소스<br>
-                        숙주미나리나물<br>
-                        깻잎지<br>
-                        배추김치
-                    </div>
-                </div>
+            <div class="card-body">
+                <table class="meal-table">
+                    <tr><th>점심</th></tr>
+                    <tr><td>*<br>보리열무비빔밥<br>바지락살미역국<br>계란후라이<br>꽈리고추어묵볶음<br>요구르트<br>배추김치</td></tr>
+                </table>
+                <table class="meal-table">
+                    <tr><th>저녁</th></tr>
+                    <tr><td>쌀밥<br>삼색수제비국<br>코다리무조림<br>치킨너겟/소스<br>숙주미나리나물<br>깻잎지<br>배추김치</td></tr>
+                </table>
             </div>
         </div>
 
         <!-- Footer -->
         <footer class="footer">
-            <h3>📋 안내사항</h3>
-            <p>위 메뉴는 식재 수급 사정에 따라 다소 변경될 수 있습니다.</p>
-            
-            <h4>🌾 원산지표시</h4>
-            <p>돈육-국내산, 우육-호주산, 닭절-국내산, 닭정육살-브라질산, 쌀-국내산, 고등어-국내산, 오징어(중국산), 꽃게(중국산), 김치(배추-국내산, 고추가루-중국산), 코다리-러시아산, 두부류-수입산, 햄소세지(외국산), 참치(가다랑어, 원양선:태평양)</p>
-            
-            <h4>🕐 식사시간</h4>
-            <p>점심 11:30 ~ 12:30<br>저녁 17:30 ~ 18:30</p>
-            
-            <h4>🏢 KBS광주 주간식단표 사이트 비공식 운영중</h4>
-            <p>사이트 문의 : 기술국 문재윤</p>
+            <div style="text-align: left;">
+                <h3>📋 안내사항</h3>
+                <p>위 메뉴는 식재 수급 사정에 따라 다소 변경될 수 있습니다.</p>
+                
+                <h4>🌾 원산지표시</h4>
+                <p>돈육-국내산, 우육-호주산, 닭절-국내산, 닭정육살-브라질산, 쌀-국내산, 고등어-국내산, 오징어(중국산), 꽃게(중국산), 김치(배추-국내산, 고추가루-중국산), 코다리-러시아산, 두부류-수입산, 햄소세지(외국산), 참치(가다랑어, 원양선:태평양)</p>
+                
+                <h4>🕐 식사시간</h4>
+                <p>점심 11:30 ~ 12:30<br>저녁 17:30 ~ 18:30</p>
+                
+                <h4>🏢 KBS광주 주간식단표 사이트 비공식 운영중</h4>
+                <p>사이트 문의 : 기술국 문재윤</p>
+            </div>
         </footer>
     </main>
 
