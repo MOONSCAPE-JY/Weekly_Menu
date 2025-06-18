@@ -614,7 +614,21 @@
 
             .day-title {
                 font-size: 1.1rem;
-            }</style>
+            }
+
+
+
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: inherit;
+  padding: 0.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+</style>
 <!-- Google tag (gtag.js) -->
 <!-- Google tag (gtag.js) -->
 <!-- Google tag (gtag.js) -->
@@ -994,12 +1008,6 @@
             installBtn.classList.remove('show');
         });
     </script>
-
-
-
-
-
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const floatBtn = document.getElementById("todayFloatBtn");
@@ -1016,6 +1024,23 @@
       });
     }
   });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleButton = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".mobile-nav");
+
+    if (toggleButton && navMenu) {
+        toggleButton.addEventListener("click", function () {
+            navMenu.classList.toggle("open");
+            if (navMenu.classList.contains("open")) {
+                toggleButton.textContent = "✕";
+            } else {
+                toggleButton.textContent = "☰";
+            }
+        });
+    }
+});
 </script>
 </body>
 </html>
