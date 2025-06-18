@@ -618,8 +618,6 @@
 <!-- Google tag (gtag.js) -->
 <!-- Google tag (gtag.js) -->
 <!-- Google tag (gtag.js) -->
-
-
 </head>
 <body>
 <div class="header">
@@ -889,8 +887,6 @@
 <button class="today-float-btn" id="todayFloatBtn" title="오늘의 식단">
         🍽️
     </button>
-
-
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script><script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -997,5 +993,18 @@
         window.addEventListener('appinstalled', () => {
             installBtn.classList.remove('show');
         });
-    </script></body>
+    </script>
+<script>
+      document.getElementById("todayFloatBtn").addEventListener("click", () => {
+        const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday"];
+        const todayIndex = new Date().getDay();
+        const dayId = days[todayIndex];
+        const element = document.getElementById(dayId);
+        if (element) {
+          const offset = element.offsetTop - 70;
+          window.scrollTo({ top: offset, behavior: "smooth" });
+        }
+      });
+    </script>
+</body>
 </html>
