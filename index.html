@@ -1,40 +1,38 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-    <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KBS광주 주간식단표 안내 페이지입니다.">
-    <meta name="theme-color" content="#3182ce">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="KBS광주 식단표">
-
-    <link rel="shortcut icon" href="https://res.static.kbs.co.kr/favicon.ico">
-    <link rel="shortcut icon" href="https://res.static.kbs.co.kr/favicon.png">
-    <link rel="apple-touch-icon" href="https://res.static.kbs.co.kr/favorite.png">
-    <link rel="manifest" href="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/manifest.webmanifest">
-
-    <title>KBS광주총국 주간 식단표</title>
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:url" content="kbsmenu.com">
-    <meta property="og:title" content="KBS광주 주간식단표">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/thumbnail.png">
-    <meta property="og:description" content="KBS광주총국 주간 식단표 안내 페이지입니다.">
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="noindex, nofollow, noarchive, nosnippet, noimageindex" name="robots"/>
+<meta content="noindex, nofollow, noarchive, nosnippet, noimageindex" name="googlebot"/>
+<meta content="noindex, nofollow, noarchive, nosnippet, noimageindex" name="bingbot"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="KBS광주 주간식단표 안내 페이지입니다." name="description"/>
+<meta content="#3182ce" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="KBS광주 주간식단표" name="apple-mobile-web-app-title"/>
+<link href="https://res.static.kbs.co.kr/favicon.ico" rel="shortcut icon"/>
+<link href="https://res.static.kbs.co.kr/favicon.png" rel="shortcut icon"/>
+<link href="https://res.static.kbs.co.kr/favorite.png" rel="apple-touch-icon"/>
+<link href="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/manifest.webmanifest" rel="manifest"/>
+<title>KBS광주총국 주간식단표</title>
+<!-- Open Graph Meta Tags -->
+<meta content="kbsmenu.com" property="og:url"/>
+<meta content="KBS광주 주간식단표" property="og:title"/>
+<meta content="website" property="og:type"/>
+<meta content="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/thumbnail.png" property="og:image"/>
+<meta content="KBS광주총국 주간식단표 안내 페이지입니다." property="og:description"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX');
     </script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -215,25 +213,7 @@
         }
 
         /* Today's Menu Floating Button */
-        .today-float-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: transparent;
-            color: #4299e1;
-            border: none;
-            border-radius: 50%;
-            box-shadow: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            transition: all 0.3s ease;
-            z-index: 1001;
-        }
+        
 
         .today-float-btn:hover {
             background: #2c5aa0;
@@ -561,293 +541,297 @@
         .day-card:nth-child(3) { animation-delay: 0.3s; }
         .day-card:nth-child(4) { animation-delay: 0.4s; }
         .day-card:nth-child(5) { animation-delay: 0.5s; }
-    </style>
+    
+.today-float-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-size: 14px;
+    box-shadow: 0 6px 12px rgba(49, 130, 206, 0.3);
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+.today-float-btn:hover {
+    background: #2563eb;
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+}
+</style>
 </head>
 <body>
-    <div class="header">
-        <button class="menu-btn" id="menuBtn">
-            <div class="menu-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </button>
-        
-        <div class="header-content">
-            <a href="https://gwangju.kbs.co.kr/" target="_blank">
-                <img src="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/9a81177fddc39730def58989b8a791298c187158/logo.svg" alt="KBS 로고">
-            </a>
-            <h1>주간 식단표</h1>
-        </div>
-        
-        <div class="update-date">업데이트 날짜 : 6/15</div>
-    </div>
-
-    <!-- Sidebar Overlay -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-    <!-- Sidebar -->
-    <nav class="sidebar" id="sidebar">
-        <ul class="nav-menu">
-            <li><a href="#monday">월요일</a></li>
-            <li><a href="#tuesday">화요일</a></li>
-            <li><a href="#wednesday">수요일</a></li>
-            <li><a href="#thursday">목요일</a></li>
-            <li><a href="#friday">금요일</a></li>
-        </ul>
-        
-        <!-- Install Button in Sidebar -->
-        <div style="padding: 0.5rem 1rem; border-top: 1px solid #e2e8f0; margin-top: auto; position: relative;">
-            <p style="font-size: 0.8rem; color: #64748b; margin: 0 0 0.4rem 0; text-align: center; line-height: 1.2;">
-                모바일에서 빠른 접속을 위해<br>홈 화면에 추가해보세요
+<div class="header">
+<button class="menu-btn" id="menuBtn">
+<div class="menu-icon">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</button>
+<div class="header-content">
+<a href="https://gwangju.kbs.co.kr/" target="_blank">
+<img alt="KBS 로고" src="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/9a81177fddc39730def58989b8a791298c187158/logo.svg"/>
+</a>
+<h1>주간 식단표</h1>
+</div>
+<div class="update-date">업데이트 날짜 : 6/15</div>
+</div>
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+<ul class="nav-menu">
+<li><a href="#monday">월요일</a></li>
+<li><a href="#tuesday">화요일</a></li>
+<li><a href="#wednesday">수요일</a></li>
+<li><a href="#thursday">목요일</a></li>
+<li><a href="#friday">금요일</a></li>
+</ul>
+<!-- Install Button in Sidebar -->
+<div style="padding: 0.5rem 1rem; border-top: 1px solid #e2e8f0; margin-top: auto; position: relative;">
+<p style="font-size: 0.8rem; color: #64748b; margin: 0 0 0.4rem 0; text-align: center; line-height: 1.2;">
+                모바일에서 빠른 접속을 위해<br/>홈 화면에 추가해보세요
             </p>
-            <button class="install-btn" id="installBtn">
+<button class="install-btn" id="installBtn">
                 📱 홈 화면에 추가하기
             </button>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main">
-        <!-- Monday -->
-        <div class="day-card" id="monday">
-            <div class="day-header color-option-1">
-                <h2 class="day-title">월요일 (6/16)</h2>
-            </div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <thead>
-                        <tr class="meal-split-header">
-                            <th>점심</th>
-                            <th>저녁</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="meal-split-content">
-                            <td>
-                                <div class="meal-items">
-                                    <div class="meal-item">쌀밥</div>
-                                    <div class="meal-item">건새우콩나물국</div>
-                                    <div class="meal-item">돈육불고기</div>
-                                    <div class="meal-item">양배추찜</div>
-                                    <div class="meal-item">두부구이/양념장</div>
-                                    <div class="meal-item">무생채</div>
-                                    <div class="meal-item">배추김치</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="meal-items">
-                                    <div class="meal-item">쌀밥</div>
-                                    <div class="meal-item">순두부계란국</div>
-                                    <div class="meal-item">고등어김치조림</div>
-                                    <div class="meal-item">비엔나볶음</div>
-                                    <div class="meal-item">단호박죽</div>
-                                    <div class="meal-item">오이지무침</div>
-                                    <div class="meal-item">깍두기</div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Tuesday -->
-        <div class="day-card" id="tuesday">
-            <div class="day-header color-option-2">
-                <h2 class="day-title">화요일 (6/17)</h2>
-            </div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <thead>
-                        <tr class="meal-split-header">
-                            <th>점심</th>
-                            <th>저녁</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="meal-split-content">
-                            <td>
-                                <div class="meal-items">
-                                    <div class="meal-item">쌀밥</div>
-                                    <div class="meal-item">유부국</div>
-                                    <div class="meal-item">등심돈까스/소스</div>
-                                    <div class="meal-item">감자채볶음</div>
-                                    <div class="meal-item">두부쑥갓무침</div>
-                                    <div class="meal-item">야채샐러드/소드</div>
-                                    <div class="meal-item">배추김치</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="meal-items">
-                                    <div class="meal-item">김밥볶음밥</div>
-                                    <div class="meal-item">라면</div>
-                                    <div class="meal-item">어묵밀떡볶이</div>
-                                    <div class="meal-item">김말이튀김</div>
-                                    <div class="meal-item">콩나물무침</div>
-                                    <div class="meal-item">단무지</div>
-                                    <div class="meal-item">배추김치</div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Wednesday -->
-        <div class="day-card" id="wednesday">
-            <div class="day-header color-option-3">
-                <h2 class="day-title">수요일 (6/18)</h2>
-            </div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <thead>
-                        <tr class="meal-split-header">
-                            <th>점심</th>
-                            <th>저녁</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="meal-split-content">
-                            <td>
-                                <div class="meal-items">
-                                    <div class="meal-item">쌀밥</div>
-                                    <div class="meal-item">참치김치찌개</div>
-                                    <div class="meal-item">모듬장조림</div>
-                                    <div class="meal-item">계란말이</div>
-                                    <div class="meal-item">구이김</div>
-                                    <div class="meal-item">상추겉절이</div>
-                                    <div class="meal-item">깍두기</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="meal-items">
-                                    <div class="meal-item">쌀밥</div>
-                                    <div class="meal-item">황태해장국</div>
-                                    <div class="meal-item">제육볶음</div>
-                                    <div class="meal-item">잡채어묵말이강정</div>
-                                    <div class="meal-item">호박볶음</div>
-                                    <div class="meal-item">부추겉절이</div>
-                                    <div class="meal-item">배추김치</div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Thursday -->
-        <div class="day-card" id="thursday">
-            <div class="day-header color-option-4">
-                <h2 class="day-title">목요일 (6/19)</h2>
-            </div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <thead>
-                        <tr class="meal-split-header">
-                            <th>점심</th>
-                            <th>저녁</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="meal-split-content">
-                            <td>
-                                <div class="meal-items">
-                                    <div class="meal-item">쌀밥</div>
-                                    <div class="meal-item">감자호박된장국</div>
-                                    <div class="meal-item">삼치구이</div>
-                                    <div class="meal-item">야채쫄면</div>
-                                    <div class="meal-item">가지굴소스볶음</div>
-                                    <div class="meal-item">연근조림</div>
-                                    <div class="meal-item">배추김치</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="meal-items">
-                                    <div class="meal-item">쌀밥</div>
-                                    <div class="meal-item">버섯찌개</div>
-                                    <div class="meal-item">간장찜닭</div>
-                                    <div class="meal-item">오징어부추전</div>
-                                    <div class="meal-item">쥐어채조림</div>
-                                    <div class="meal-item">오이새콤무침</div>
-                                    <div class="meal-item">배추김치</div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Friday -->
-        <div class="day-card" id="friday">
-            <div class="day-header color-option-5">
-                <h2 class="day-title">금요일 (6/20)</h2>
-            </div>
-            <div class="card-body">
-                <table class="meal-table">
-                    <thead>
-                        <tr class="meal-split-header">
-                            <th>점심</th>
-                            <th>저녁</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="meal-split-content">
-                            <td>
-                                <div class="meal-items">
-                                    <div class="meal-item">*</div>
-                                    <div class="meal-item">보리열무비빔밥</div>
-                                    <div class="meal-item">바지락살미역국</div>
-                                    <div class="meal-item">계란후라이</div>
-                                    <div class="meal-item">꽈리고추어묵볶음</div>
-                                    <div class="meal-item">요구르트</div>
-                                    <div class="meal-item">배추김치</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="meal-items">
-                                    <div class="meal-item">쌀밥</div>
-                                    <div class="meal-item">삼색수제비국</div>
-                                    <div class="meal-item">코다리무조림</div>
-                                    <div class="meal-item">치킨너겟/소스</div>
-                                    <div class="meal-item">숙주미나리나물</div>
-                                    <div class="meal-item">깻잎지</div>
-                                    <div class="meal-item">배추김치</div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div style="text-align: left;">
-                <h3>📋 안내사항</h3>
-                <p>위 메뉴는 식재 수급 사정에 따라 다소 변경될 수 있습니다.</p>
-                
-                <h4>🌾 원산지 표시</h4>
-                <p>돈육-국내산, 우육-호주산, 닭절-국내산, 닭정육살-브라질산, 쌀-국내산, 고등어-국내산, 오징어(중국산), 꽃게(중국산), 김치(배추-국내산, 고추가루-중국산), 코다리-러시아산, 두부류-수입산, 햄소세지(외국산), 참치(가다랑어, 원양선:태평양)</p>
-                
-                <h4>🕐 식사시간</h4>
-                <p>점심 11:30 ~ 12:30<br>저녁 17:30 ~ 18:30</p>
-                
-                <h4>🏢 KBS광주 주간식단표 사이트 비공식 운영중</h4>
-                <p>사이트 문의 : 기술국 문재윤</p>
-            </div>
-        </footer>
-    </main>
-
-    <!-- Today's Menu Floating Button -->
-    <button class="today-float-btn" id="todayFloatBtn" title="오늘의 식단">
+</div>
+</nav>
+<!-- Main Content -->
+<main class="main">
+<!-- Monday -->
+<div class="day-card" id="monday">
+<div class="day-header color-option-1">
+<h2 class="day-title">월요일 (6/16)</h2>
+</div>
+<div class="card-body">
+<table class="meal-table">
+<thead>
+<tr class="meal-split-header">
+<th>점심</th>
+<th>저녁</th>
+</tr>
+</thead>
+<tbody>
+<tr class="meal-split-content">
+<td>
+<div class="meal-items">
+<div class="meal-item">쌀밥</div>
+<div class="meal-item">건새우콩나물국</div>
+<div class="meal-item">돈육불고기</div>
+<div class="meal-item">양배추찜</div>
+<div class="meal-item">두부구이/양념장</div>
+<div class="meal-item">무생채</div>
+<div class="meal-item">배추김치</div>
+</div>
+</td>
+<td>
+<div class="meal-items">
+<div class="meal-item">쌀밥</div>
+<div class="meal-item">순두부계란국</div>
+<div class="meal-item">고등어김치조림</div>
+<div class="meal-item">비엔나볶음</div>
+<div class="meal-item">단호박죽</div>
+<div class="meal-item">오이지무침</div>
+<div class="meal-item">깍두기</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Tuesday -->
+<div class="day-card" id="tuesday">
+<div class="day-header color-option-2">
+<h2 class="day-title">화요일 (6/17)</h2>
+</div>
+<div class="card-body">
+<table class="meal-table">
+<thead>
+<tr class="meal-split-header">
+<th>점심</th>
+<th>저녁</th>
+</tr>
+</thead>
+<tbody>
+<tr class="meal-split-content">
+<td>
+<div class="meal-items">
+<div class="meal-item">쌀밥</div>
+<div class="meal-item">유부국</div>
+<div class="meal-item">등심돈까스/소스</div>
+<div class="meal-item">감자채볶음</div>
+<div class="meal-item">두부쑥갓무침</div>
+<div class="meal-item">야채샐러드/소드</div>
+<div class="meal-item">배추김치</div>
+</div>
+</td>
+<td>
+<div class="meal-items">
+<div class="meal-item">김밥볶음밥</div>
+<div class="meal-item">라면</div>
+<div class="meal-item">어묵밀떡볶이</div>
+<div class="meal-item">김말이튀김</div>
+<div class="meal-item">콩나물무침</div>
+<div class="meal-item">단무지</div>
+<div class="meal-item">배추김치</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Wednesday -->
+<div class="day-card" id="wednesday">
+<div class="day-header color-option-3">
+<h2 class="day-title">수요일 (6/18)</h2>
+</div>
+<div class="card-body">
+<table class="meal-table">
+<thead>
+<tr class="meal-split-header">
+<th>점심</th>
+<th>저녁</th>
+</tr>
+</thead>
+<tbody>
+<tr class="meal-split-content">
+<td>
+<div class="meal-items">
+<div class="meal-item">쌀밥</div>
+<div class="meal-item">참치김치찌개</div>
+<div class="meal-item">모듬장조림</div>
+<div class="meal-item">계란말이</div>
+<div class="meal-item">구이김</div>
+<div class="meal-item">상추겉절이</div>
+<div class="meal-item">깍두기</div>
+</div>
+</td>
+<td>
+<div class="meal-items">
+<div class="meal-item">쌀밥</div>
+<div class="meal-item">황태해장국</div>
+<div class="meal-item">제육볶음</div>
+<div class="meal-item">잡채어묵말이강정</div>
+<div class="meal-item">호박볶음</div>
+<div class="meal-item">부추겉절이</div>
+<div class="meal-item">배추김치</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Thursday -->
+<div class="day-card" id="thursday">
+<div class="day-header color-option-4">
+<h2 class="day-title">목요일 (6/19)</h2>
+</div>
+<div class="card-body">
+<table class="meal-table">
+<thead>
+<tr class="meal-split-header">
+<th>점심</th>
+<th>저녁</th>
+</tr>
+</thead>
+<tbody>
+<tr class="meal-split-content">
+<td>
+<div class="meal-items">
+<div class="meal-item">쌀밥</div>
+<div class="meal-item">감자호박된장국</div>
+<div class="meal-item">삼치구이</div>
+<div class="meal-item">야채쫄면</div>
+<div class="meal-item">가지굴소스볶음</div>
+<div class="meal-item">연근조림</div>
+<div class="meal-item">배추김치</div>
+</div>
+</td>
+<td>
+<div class="meal-items">
+<div class="meal-item">쌀밥</div>
+<div class="meal-item">버섯찌개</div>
+<div class="meal-item">간장찜닭</div>
+<div class="meal-item">오징어부추전</div>
+<div class="meal-item">쥐어채조림</div>
+<div class="meal-item">오이새콤무침</div>
+<div class="meal-item">배추김치</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Friday -->
+<div class="day-card" id="friday">
+<div class="day-header color-option-5">
+<h2 class="day-title">금요일 (6/20)</h2>
+</div>
+<div class="card-body">
+<table class="meal-table">
+<thead>
+<tr class="meal-split-header">
+<th>점심</th>
+<th>저녁</th>
+</tr>
+</thead>
+<tbody>
+<tr class="meal-split-content">
+<td>
+<div class="meal-items">
+<div class="meal-item">*</div>
+<div class="meal-item">보리열무비빔밥</div>
+<div class="meal-item">바지락살미역국</div>
+<div class="meal-item">계란후라이</div>
+<div class="meal-item">꽈리고추어묵볶음</div>
+<div class="meal-item">요구르트</div>
+<div class="meal-item">배추김치</div>
+</div>
+</td>
+<td>
+<div class="meal-items">
+<div class="meal-item">쌀밥</div>
+<div class="meal-item">삼색수제비국</div>
+<div class="meal-item">코다리무조림</div>
+<div class="meal-item">치킨너겟/소스</div>
+<div class="meal-item">숙주미나리나물</div>
+<div class="meal-item">깻잎지</div>
+<div class="meal-item">배추김치</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer -->
+<footer class="footer">
+<div style="text-align: left;">
+<h3>📋 안내사항</h3>
+<p>위 메뉴는 식재 수급 사정에 따라 다소 변경될 수 있습니다.</p>
+<h4>🌾 원산지 표시</h4>
+<p>돈육-국내산, 우육-호주산, 닭절-국내산, 닭정육살-브라질산, 쌀-국내산, 고등어-국내산, 오징어(중국산), 꽃게(중국산), 김치(배추-국내산, 고추가루-중국산), 코다리-러시아산, 두부류-수입산, 햄소세지(외국산), 참치(가다랑어, 원양선:태평양)</p>
+<h4>🕐 식사시간</h4>
+<p>점심 11:30 ~ 12:30<br/>저녁 17:30 ~ 18:30</p>
+<h4>🏢 KBS광주 주간식단표 사이트 비공식 운영중</h4>
+<p>사이트 문의 : 기술국 문재윤</p>
+</div>
+</footer>
+</main>
+<!-- Today's Menu Floating Button -->
+<button class="today-float-btn" id="todayFloatBtn" title="오늘의 식단">
         🍽️
     </button>
-
-    <script>
+<script>
         // Menu toggle functionality
         const menuBtn = document.getElementById('menuBtn');
         const sidebar = document.getElementById('sidebar');
