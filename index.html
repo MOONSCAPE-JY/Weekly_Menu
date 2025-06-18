@@ -618,13 +618,8 @@
 <!-- Google tag (gtag.js) -->
 <!-- Google tag (gtag.js) -->
 <!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R0PVEQMSZ2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-R0PVEQMSZ2');
-</script>
+
+
 </head>
 <body>
 <div class="header">
@@ -655,9 +650,14 @@
 <li><a href="#friday">금요일</a></li>
 </ul>
 <!-- Install Button in Sidebar -->
+<div style="padding: 0.5rem 1rem; border-top: 1px solid #e2e8f0; margin-top: auto; position: relative;">
+<p style="font-size: 0.8rem; color: #64748b; margin: 0 0 0.4rem 0; text-align: center; line-height: 1.2;">
+                모바일에서 빠른 접속을 위해<br/>홈 화면에 추가해보세요
+            </p>
 <button class="install-btn" id="installBtn">
-            📱 홈 화면에 추가
-        </button>
+                📱 홈 화면에 추가하기
+            </button>
+</div>
 </nav>
 <!-- Main Content -->
 <main class="main">
@@ -889,42 +889,14 @@
 <button class="today-float-btn" id="todayFloatBtn" title="오늘의 식단">
         🍽️
     </button>
-<script>
-  document.getElementById("todayFloatBtn").addEventListener("click", () => {
-    const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday"];
-    const todayIndex = new Date().getDay();
-    const dayId = days[todayIndex];
-    const element = document.getElementById(dayId);
-    if (element) {
-      const offset = element.offsetTop - 70;
-      window.scrollTo({ top: offset, behavior: "smooth" });
-    }
-  });
-</script>
-<script>
-  // 햄버거 토글 기능
-  const toggle = document.querySelector(".menu-toggle");
-  const menu = document.querySelector(".menu");
-  toggle.addEventListener("click", () => {
-    menu.classList.toggle("open");
-  });
 
-  // 메뉴 클릭 시 해당 요일로 스크롤 이동
-  const menuLinks = document.querySelectorAll(".menu a");
-  menuLinks.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const targetId = link.getAttribute("href").replace("#", "");
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        const offset = targetElement.offsetTop - 70;
-        window.scrollTo({ top: offset, behavior: "smooth" });
-      }
-      menu.classList.remove("open");
-    });
-  });
-</script>
-<script>
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script><script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script><script>
         // Menu toggle functionality
         const menuBtn = document.getElementById('menuBtn');
         const sidebar = document.getElementById('sidebar');
@@ -951,21 +923,36 @@
                 e.preventDefault();
                 closeMenu();
                 
-                // Calculate offset to remove white space above the day card
+                // Get target element and scroll to it
                 const targetId = this.getAttribute('href').substring(1);
-                const targetCard = document.getElementById(targetId);
-                if (targetCard) {
-                    const headerHeight = document.querySelector('.header').offsetHeight || 0;
-                    const updateDateHeight = document.querySelector('.update-date').offsetHeight || 0;
-                    const offset = headerHeight + updateDateHeight + 20; // 20px extra padding
-                    
-                    const elementPosition = targetCard.offsetTop;
-                    const offsetPosition = elementPosition - offset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    // Get the day title element specifically and use its absolute position
+                    const dayTitle = targetElement.querySelector('.day-title');
+                    if (dayTitle) {
+                        // Get header height to position title right below it
+                        const header = document.querySelector('.header');
+                        const headerHeight = header ? header.offsetHeight : 70;
+                        
+                        // Get absolute position of the day title
+                        let element = dayTitle;
+                        let offsetTop = 0;
+                        
+                        // Calculate absolute position by adding all parent offsets
+                        while (element) {
+                            offsetTop += element.offsetTop;
+                            element = element.offsetParent;
+                        }
+                        
+                        // Position day title text right below the header with slight spacing
+                        const scrollToPosition = offsetTop - headerHeight - 11;
+                        
+                        window.scrollTo({
+                            top: Math.max(0, scrollToPosition),
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
         });
@@ -992,7 +979,7 @@
                 // iOS Safari or browsers that don't support beforeinstallprompt
                 if (navigator.share) {
                     // Show share dialog with instructions
-                    alert('Safari: 공유 버튼 → "홈 화면에 추가"를 선택해주세요\n\nChrome: 메뉴 → "홈 화면에 추가"를 선택해주세요');
+                    alert('Chrome: 메뉴 → "홈 화면에 추가"를 선택해주세요\n\nSafari: 공유 버튼 → "홈 화면에 추가"를 선택해주세요');
                 } else {
                     alert('브라우저 메뉴에서 "홈 화면에 추가" 또는 "바탕화면에 추가"를 선택해주세요');
                 }
