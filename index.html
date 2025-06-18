@@ -994,17 +994,26 @@
             installBtn.classList.remove('show');
         });
     </script>
+
+
+
+
 <script>
-      document.getElementById("todayFloatBtn").addEventListener("click", () => {
+  document.addEventListener("DOMContentLoaded", function () {
+    const floatBtn = document.getElementById("todayFloatBtn");
+    if (floatBtn) {
+      floatBtn.addEventListener("click", function () {
         const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday"];
-        const todayIndex = new Date().getDay();
-        const dayId = days[todayIndex];
-        const element = document.getElementById(dayId);
-        if (element) {
-          const offset = element.offsetTop - 70;
+        const today = new Date().getDay();
+        const targetId = days[today];
+        const target = document.getElementById(targetId);
+        if (target) {
+          const offset = target.getBoundingClientRect().top + window.scrollY - 70;
           window.scrollTo({ top: offset, behavior: "smooth" });
         }
       });
-    </script>
+    }
+  });
+</script>
 </body>
 </html>
