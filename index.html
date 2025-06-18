@@ -894,165 +894,9 @@
 <button class="today-float-btn" id="todayFloatBtn" title="오늘의 식단">
         🍽️
     </button>
-<script>
-        // Menu toggle functionality
-        const menuBtn = document.getElementById('menuBtn');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-        function toggleMenu() {
-            menuBtn.classList.toggle('active');
-            sidebar.classList.toggle('active');
-            sidebarOverlay.classList.toggle('active');
-        }
 
-        function closeMenu() {
-            menuBtn.classList.remove('active');
-            sidebar.classList.remove('active');
-            sidebarOverlay.classList.remove('active');
-        }
 
-        menuBtn.addEventListener('click', toggleMenu);
-        sidebarOverlay.addEventListener('click', closeMenu);
-
-        // Navigate to specific day when clicking navigation links
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                closeMenu();
-                
-                // Get target element and scroll to it
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    // Get the day title element specifically and use its absolute position
-                    const dayTitle = targetElement.querySelector('.day-title');
-                    if (dayTitle) {
-                        // Get header height to position title right below it
-                        const header = document.querySelector('.header');
-                        const headerHeight = header ? header.offsetHeight : 70;
-                        
-                        // Get absolute position of the day title
-                        let element = dayTitle;
-                        let offsetTop = 0;
-                        
-                        // Calculate absolute position by adding all parent offsets
-                        while (element) {
-                            offsetTop += element.offsetTop;
-                            element = element.offsetParent;
-                        }
-                        
-                        // Position day title text right below the header with slight spacing
-                        const scrollToPosition = offsetTop - headerHeight - 11;
-                        
-                        window.scrollTo({
-                            top: Math.max(0, scrollToPosition),
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-
-        // PWA Install functionality
-        let deferredPrompt;
-        const installBtn = document.getElementById('installBtn');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.classList.add('show');
-        });
-
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    installBtn.classList.remove('show');
-                }
-                deferredPrompt = null;
-            } else {
-                // iOS Safari or browsers that don't support beforeinstallprompt
-                if (navigator.share) {
-                    // Show share dialog with instructions
-                    alert('Chrome: 메뉴 → "홈 화면에 추가"를 선택해주세요\n\nSafari: 공유 버튼 → "홈 화면에 추가"를 선택해주세요');
-                } else {
-                    alert('브라우저 메뉴에서 "홈 화면에 추가" 또는 "바탕화면에 추가"를 선택해주세요');
-                }
-            }
-        });
-
-        // Show install button on mobile devices
-        if (window.matchMedia('(display-mode: browser)').matches) {
-            // Check if it's mobile
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                installBtn.classList.add('show');
-            }
-        }
-
-        window.addEventListener('appinstalled', () => {
-            installBtn.classList.remove('show');
-        });
-
-        // Today's Menu Function
-        function scrollToTodayMeal() {
-            const today = new Date();
-            const dayOfWeek = today.getDay(); // 0=Sunday, 1=Monday, ..., 6=Saturday
-
-            let targetId = '';
-            switch(dayOfWeek) {
-                case 1: targetId = 'monday'; break;
-                case 2: targetId = 'tuesday'; break;
-                case 3: targetId = 'wednesday'; break;
-                case 4: targetId = 'thursday'; break;
-                case 5: targetId = 'friday'; break;
-                default: 
-                    alert('주말에는 식단이 제공되지 않습니다. 😊');
-                    return;
-            }
-
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                const dayTitle = targetElement.querySelector('.day-title');
-                if (dayTitle) {
-                    const header = document.querySelector('.header');
-                    const headerHeight = header ? header.offsetHeight : 70;
-
-                    let element = dayTitle;
-                    let offsetTop = 0;
-
-                    while (element) {
-                        offsetTop += element.offsetTop;
-                        element = element.offsetParent;
-                    }
-
-                    const scrollToPosition = offsetTop - headerHeight - 11;
-
-                    window.scrollTo({
-                        top: Math.max(0, scrollToPosition),
-                        behavior: 'smooth'
-                    });
-
-                    targetElement.style.transform = 'scale(1.02)';
-                    targetElement.style.boxShadow = '0 8px 25px rgba(66, 153, 225, 0.3)';
-
-                    setTimeout(() => {
-                        targetElement.style.transform = '';
-                        targetElement.style.boxShadow = '';
-                    }, 2000);
-                }
-            }
-        }
-
-        // Add event listener for today's floating menu button
-        const todayFloatBtn = document.getElementById('todayFloatBtn');
-        todayFloatBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            scrollToTodayMeal();
-        });
-    </script>
 
 <script>
   document.getElementById("todayFloatBtn").addEventListener("click", () => {
@@ -1061,7 +905,8 @@
     const dayId = days[todayIndex];
     const element = document.getElementById(dayId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      const offset = element.offsetTop - 70;
+      window.scrollTo({ top: offset, behavior: "smooth" });
     }
   });
 </script>
