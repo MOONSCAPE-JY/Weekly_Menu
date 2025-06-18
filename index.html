@@ -338,6 +338,8 @@
         
         .meal-table th, .meal-table td {
             border: 1px solid #ddd;
+            border-left: none;
+            border-right: none;
             padding: 8px;
             text-align: center;
             font-size: 18px;
@@ -364,8 +366,12 @@
             border-right: 1px solid #ddd;
         }
 
+        .meal-split-header th:first-child {
+            border-left: 1px solid #ddd;
+        }
+
         .meal-split-header th:last-child {
-            border-right: none;
+            border-right: 1px solid #ddd;
         }
 
         .meal-split-content {
@@ -380,8 +386,12 @@
             line-height: 1.4;
         }
 
+        .meal-split-content td:first-child {
+            border-left: 1px solid #ddd;
+        }
+
         .meal-split-content td:last-child {
-            border-right: none;
+            border-right: 1px solid #ddd;
         }
 
         .meal-items {
@@ -851,8 +861,8 @@
                             element = element.offsetParent;
                         }
                         
-                        // Position day title text right below the header
-                        const scrollToPosition = offsetTop - headerHeight - 5;
+                        // Position day title text right below the header with slight spacing
+                        const scrollToPosition = offsetTop - headerHeight - 11;
                         
                         window.scrollTo({
                             top: Math.max(0, scrollToPosition),
