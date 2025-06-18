@@ -74,7 +74,7 @@
             right: 0;
             background: white;
             z-index: 1000;
-            padding: 15px;
+            padding: 15px 15px 15px 0px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             height: 70px;
         }
@@ -208,9 +208,10 @@
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
             transition: left 0.3s ease;
             z-index: 999;
-            padding: 80px 20px 20px 20px;
+            padding: 80px 20px 80px 20px;
             display: flex;
             flex-direction: column;
+            overflow-y: auto;
         }
 
         .sidebar.active {
@@ -588,7 +589,7 @@
         </ul>
         
         <!-- Install Button in Sidebar -->
-        <div style="padding: 0.5rem 1rem; border-top: 1px solid #e2e8f0; margin-top: 1rem; position: absolute; bottom: 1rem; left: 0; right: 0;">
+        <div style="padding: 0.5rem 1rem; border-top: 1px solid #e2e8f0; margin-top: auto; position: relative;">
             <p style="font-size: 0.8rem; color: #64748b; margin: 0 0 0.4rem 0; text-align: center; line-height: 1.2;">
                 모바일에서 빠른 접속을 위해<br>홈 화면에 추가해보세요
             </p>
@@ -735,15 +736,31 @@
                 const targetElement = document.getElementById(targetId);
                 
                 if (targetElement) {
-                    // Calculate position to bring day title to top
-                    const elementPosition = targetElement.offsetTop;
-                    const scrollToPosition = elementPosition - 30; // Small offset from top
-                    
-                    // Scroll to the calculated position
-                    window.scrollTo({
-                        top: Math.max(0, scrollToPosition),
-                        behavior: 'smooth'
-                    });
+                    // Get the day title element specifically and use its absolute position
+                    const dayTitle = targetElement.querySelector('.day-title');
+                    if (dayTitle) {
+                        // Get header height to position title right below it
+                        const header = document.querySelector('.header');
+                        const headerHeight = header ? header.offsetHeight : 70;
+                        
+                        // Get absolute position of the day title
+                        let element = dayTitle;
+                        let offsetTop = 0;
+                        
+                        // Calculate absolute position by adding all parent offsets
+                        while (element) {
+                            offsetTop += element.offsetTop;
+                            element = element.offsetParent;
+                        }
+                        
+                        // Position day title text right below the header
+                        const scrollToPosition = offsetTop - headerHeight - 5;
+                        
+                        window.scrollTo({
+                            top: Math.max(0, scrollToPosition),
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
         });
