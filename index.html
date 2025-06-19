@@ -272,11 +272,24 @@
         .day-title {
             font-size: 1.3rem;
             font-weight: 600;
-            color: hsl(210, 10%, 30%); /* 모든 요일 텍스트 색상 통일 */
             margin: 0;
         }
+        
+        /* 모든 요일 텍스트 색상을 수요일 색상(#36454F)으로 통일 */
+        .color-option-1 .day-title,
+        .color-option-2 .day-title,
+        .color-option-3 .day-title,
+        .color-option-4 .day-title,
+        .color-option-5 .day-title {
+            color: #36454F; /* 수요일 텍스트 색상으로 통일 */
+        }
 
-        /* 기존의 개별 요일 텍스트 색상 설정은 제거되었습니다. */
+        /* 토요일, 일요일은 배경색이 흰색이므로, 텍스트 색상을 진한 회색으로 유지합니다. */
+        .color-option-6 .day-title, /* 토요일 */
+        .color-option-7 .day-title { /* 일요일 */
+            color: #475569; /* 진한 회색 */
+        }
+
 
         .card-body {
             padding: 10px;
