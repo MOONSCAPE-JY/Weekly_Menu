@@ -17,12 +17,12 @@
     <link href="https://res.static.kbs.co.kr/favicon.png" rel="shortcut icon"/>
     <link href="https://res.static.kbs.co.kr/favorite.png" rel="apple-touch-icon"/>
     <link href="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/manifest.webmanifest" rel="manifest"/>
-    <title>KBS광주총국 주간식단표</title>
+    <title>KBS광주이국 주간식단표</title>
     <meta content="kbsmenu.com" property="og:url"/>
     <meta content="KBS광주 주간식단표" property="og:title"/>
     <meta content="website" property="og:type"/>
     <meta content="https://raw.githubusercontent.com/MOONSCAPE-JY/Weekly_Menu/main/thumbnail.png" property="og:image"/>
-    <meta content="KBS광주총국 주간식단표 안내페이지입니다." property="og:description"/>
+    <meta content="KBS광주이국 주간식단표 안내페이지입니다." property="og:description"/>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <style>
         * {
@@ -378,8 +378,7 @@
             background: white;
             border-radius: 16px;
             padding: 2rem;
-            margin: 2rem auto 0 auto;
-            max-width: 1200px;
+            margin-top: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.1);
             transform: translateY(0);
             transition: all 0.3s ease;
@@ -417,6 +416,13 @@
             .main {
                 padding: 1rem 0.75rem;
                 margin-top: 70px;
+            }
+
+            .footer {
+                margin-left: 0.75rem;
+                margin-right: 0.75rem;
+                margin-top: 2rem;
+                width: calc(100% - 1.5rem);
             }
 
             .day-title {
@@ -727,8 +733,7 @@
             </table>
         </div>
     </div>
-    </main>
-<footer class="footer">
+    <footer class="footer">
     <div style="text-align: left;">
         <h3>📋 안내사항</h3>
         <p>위 메뉴는 식재 수급 사정에 따라 다소 변경될 수 있습니다.</p>
@@ -740,6 +745,7 @@
         <p>사이트 문의 : 기술국 문재윤</p>
     </div>
 </footer>
+    </main>
 <button class="today-float-btn" id="todayFloatBtn" title="오늘의 식단">
         🍽️
 </button>
